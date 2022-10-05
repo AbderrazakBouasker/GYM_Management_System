@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#loading" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.sceneController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="471.0" layoutX="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/Users/abder/OneDrive/Documents/GitHub/mini_projet_java/src/main/img/GymManagerLogo.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="loadbar" layoutX="102.0" layoutY="377.0" prefHeight="18.0" prefWidth="376.0" progress="0.0" />
+      <Text fx:id="loadpercent" fill="#0d2240" layoutX="275.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
