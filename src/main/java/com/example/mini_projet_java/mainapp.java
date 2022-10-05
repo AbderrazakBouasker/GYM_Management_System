@@ -17,18 +17,18 @@ public class mainapp extends Application {
 
 
 
-    {
+    /*{
         try {
             Connection myconn = DriverManager.getConnection(url,user,password);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("loading-screen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("login-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("gym manager");
         stage.setScene(scene);
