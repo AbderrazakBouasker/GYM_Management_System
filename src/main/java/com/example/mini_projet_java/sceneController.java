@@ -21,20 +21,15 @@ import org.w3c.dom.events.Event;
 
 public class sceneController {
 
-    @FXML
-    private Button loginbutton;
 
-    @FXML
-    public TextField passwordinput;
-
-    @FXML
-    public TextField usernameinput;
 
     @FXML
     private ProgressBar loadbar;
 
     @FXML
     private Text loadpercent;
+
+
 
 
     void loading(ActionEvent event){
@@ -46,9 +41,14 @@ public class sceneController {
 
 
     }
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    public void pri(ActionEvent event){
+        System.out.println("gararara");
+    }
+
+
+
+
+
     /*void switchscene(ActionEvent event){
         FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("main-screen.fxml"));
         stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -56,18 +56,7 @@ public class sceneController {
         stage.setScene(scene);
         stage.show();
     }*/
-    void login(ActionEvent event){
-    if ((usernameinput.getText()=="kala") && (passwordinput.getText()=="kala") ){
-        FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("main-screen.fxml"));
-        stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        }
-    else{
-        System.out.println("non");
-    }
-    }
+
 
 
 
