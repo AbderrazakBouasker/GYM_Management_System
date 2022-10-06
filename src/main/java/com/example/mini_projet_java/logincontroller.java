@@ -31,6 +31,24 @@ public class logincontroller {
     @FXML
     public Label wronginfo;
 
+    @FXML
+    private TextField forgotmovie;
+
+    @FXML
+    private Label forgotpassword;
+
+    @FXML
+    private TextField forgotsong;
+
+    @FXML
+    private TextField forgotusername;
+
+    @FXML
+    private Button forgotback;
+
+    @FXML
+    private Button forgotsubmit;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -59,8 +77,30 @@ public class logincontroller {
         }
     }
 
-    public void forgotinfo(ActionEvent event){
+    public void forgotinfo(ActionEvent event) throws IOException {
+        root = FXMLLoader.load((getClass()).getResource("recover-screen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+    public void recoverinfo(ActionEvent event) throws IOException {
+        if (forgotusername.getText().toString().equals("kala") && forgotmovie.getText().toString().equals("endgame") && forgotsong.getText().toString().equals("endgame")){
+            forgotpassword.setText("kalala");
+        } else if (forgotusername.getText().isEmpty() && forgotmovie.getText().isEmpty() && forgotsong.getText().isEmpty()) {
+            forgotpassword.setText("Please answer the questions");
+        } else{
+            forgotpassword.setText("Wrong answers");
+        }
+    }
+
+    public void gologinscene(ActionEvent event) throws IOException {
+        root = FXMLLoader.load((getClass()).getResource("login-screen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
