@@ -57,6 +57,8 @@ public class logincontroller {
 
     private String dbusername;
     private String dbuserpassword;
+    private String dbusermovie;
+    private String dbusermusic;
 
     String url="jdbc:mysql://localhost:3306/miniprojdb";
     String user="root";
@@ -70,9 +72,13 @@ public class logincontroller {
         while (resultSet.next()) {
             dbuserpassword=resultSet.getString("password");
             dbusername=resultSet.getString("username");
+            dbusermovie=resultSet.getString("qmovie");
+            dbusermusic=resultSet.getString("qmusic");
 
         }
     }
+
+
 
 
 
@@ -101,9 +107,10 @@ public class logincontroller {
         stage.show();
     }
 
-    public void recoverinfo(ActionEvent event) throws IOException {
-        if (forgotusername.getText().toString().equals("kala") && forgotmovie.getText().toString().equals("endgame") && forgotsong.getText().toString().equals("endgame")){
-            forgotpassword.setText("kalala");
+    public void recoverinfo(ActionEvent event) throws IOException, SQLException {
+        dbgetuserinfo();
+        if (forgotusername.getText().toString().equals(dbusername) && forgotmovie.getText().toString().equals(dbusermovie) && forgotsong.getText().toString().equals(dbusermusic)){
+            forgotpassword.setText(dbuserpassword);
         } else if (forgotusername.getText().isEmpty() && forgotmovie.getText().isEmpty() && forgotsong.getText().isEmpty()) {
             forgotpassword.setText("Please answer the questions");
         } else{
@@ -117,6 +124,10 @@ public class logincontroller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void insert(ActionEvent event){
+
     }
 
 }
