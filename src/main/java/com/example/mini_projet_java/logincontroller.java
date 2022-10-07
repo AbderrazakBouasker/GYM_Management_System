@@ -64,10 +64,13 @@ public class logincontroller {
     String user="root";
     String password="24506544";
 
+
     public void dbgetuserinfo() throws SQLException {
+        String username=usernameinput.getText().toString();
+        String query="select * from logininfo where username=\""+username+ "\"";
         Connection connection = DriverManager.getConnection(url,user,password);
         Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery("select * from logininfo");
+        ResultSet resultSet=statement.executeQuery(query);
 
         while (resultSet.next()) {
             dbuserpassword=resultSet.getString("password");

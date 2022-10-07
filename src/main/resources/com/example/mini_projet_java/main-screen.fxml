@@ -3,48 +3,63 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="555.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.mainscreencontroller">
    <children>
-      <Button layoutX="33.0" layoutY="79.0" mnemonicParsing="false" text="Dashboard" />
-      <Button layoutX="33.0" layoutY="150.0" mnemonicParsing="false" text="Members list" />
-      <Button layoutX="33.0" layoutY="220.0" mnemonicParsing="false" text="Add new member" />
-      <Button layoutX="33.0" layoutY="334.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="maindashboardbutton" layoutX="33.0" layoutY="68.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" text="Dashboard" />
+      <Button fx:id="mainlistbutton" layoutX="33.0" layoutY="197.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="111.0" text="Members list" />
+      <Button fx:id="mainaddbutton" layoutX="33.0" layoutY="320.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
+      <Button fx:id="mainlogoutbutton" layoutX="33.0" layoutY="480.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="74.0" text="Logout" />
       <Text layoutX="174.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
-      <Text layoutX="202.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly revenue">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="202.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym members">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Text>
-      <Text layoutX="436.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nearly expired subscription" />
-      <Label layoutX="228.0" layoutY="315.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="233.0" layoutY="192.0">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <ScrollPane layoutX="436.0" layoutY="105.0" prefHeight="380.0" prefWidth="330.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="379.0" prefWidth="329.0" />
-        </content>
-      </ScrollPane>
       <Accordion layoutX="181.0" layoutY="88.0" />
+      <Pane layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="616.0">
+         <children>
+            <Text layoutX="64.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly revenue">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="72.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym members">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="322.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nearly expired subscription">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TableView fx:id="dashboardexpirationtable" layoutX="215.0" layoutY="57.0" prefHeight="397.0" prefWidth="394.0">
+              <columns>
+                <TableColumn fx:id="dashboardlistname" prefWidth="147.0" text="Name" />
+                <TableColumn fx:id="dashboardlistlastname" prefWidth="148.0" text="Lastname" />
+                  <TableColumn fx:id="dashboardlistdays" prefWidth="98.0" text="Remaining days" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Label fx:id="dashboardmemberslabel" layoutX="97.0" layoutY="109.0" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="dashboardrevenuelabel" layoutX="97.0" layoutY="326.0" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
