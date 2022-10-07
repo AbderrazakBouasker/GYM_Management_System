@@ -55,6 +55,9 @@ public class logincontroller {
     private Scene scene;
     private Parent root;
 
+    private String dbusername;
+    private String dbuserpassword;
+
     String url="jdbc:mysql://localhost:3306/miniprojdb";
     String user="root";
     String password="24506544";
@@ -65,7 +68,9 @@ public class logincontroller {
         ResultSet resultSet=statement.executeQuery("select * from logininfo");
 
         while (resultSet.next()) {
-            System.out.println(resultSet.getString("password"));
+            dbuserpassword=resultSet.getString("password");
+            dbusername=resultSet.getString("username");
+
         }
     }
 
@@ -74,7 +79,7 @@ public class logincontroller {
 
     public void login(ActionEvent event) throws IOException, SQLException {
         dbgetuserinfo();
-        if(usernameinput.getText().toString().equals("kala") && passwordinput.getText().toString().equals("kalala")){
+        if(usernameinput.getText().toString().equals(dbusername) && passwordinput.getText().toString().equals(dbuserpassword)){
             root = FXMLLoader.load((getClass()).getResource("main-screen.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
