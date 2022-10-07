@@ -126,8 +126,10 @@ public class logincontroller {
         stage.show();
     }
 
-    public void insert(ActionEvent event){
-
-    }
+    /*public void insert(ActionEvent event) throws IOException,SQLException {
+        Connection connection = DriverManager.getConnection(url,user,password);
+        Statement statement =connection.createStatement();
+        statement.execute("insert into logininfo values (default,\"mohsen\",147852369,\"avenger\",\"avenger2\");");
+    }*/
 
 }
