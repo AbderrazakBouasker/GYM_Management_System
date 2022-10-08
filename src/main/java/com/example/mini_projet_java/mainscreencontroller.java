@@ -21,8 +21,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class mainscreencontroller {
+public class mainscreencontroller implements Initializable {
 
     @FXML
     private TableView<dashtableimp> dashboardexpirationtable;
@@ -77,21 +79,34 @@ public class mainscreencontroller {
     ObservableList<dashtableimp> obser = FXCollections.observableArrayList();
     @Override
 
-    public void initialize(URL ur, ResourceBundle resourceBundle) throws SQLException {
+    public void initialize(URL ur, ResourceBundle resourceBundle) {
+        try{
+        Connection connection = DriverManager.getConnection(url,user,password);
+        Statement statement =connection.createStatement();
+        ResultSet resultSet=statement.executeQuery("select * from members");
+            while (resultSet.next()) {
+                obser.add(new dashtableimp(resultSet.getString("name"),resultSet.getString("lastname")
+                        ,resultSet.getString("enddate")));
+            }
+            resultSet=statement.executeQuery("select count(idnumber) from members");
+
+            while (resultSet.next()) {
+                membersnumber=resultSet.getString("count(idnumber)");
+
+            }
+            dashboardmemberslabel.setText(membersnumber);
+        }
+        catch (SQLException e){
+            Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
+        }
+
+
         dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
         dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
 
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery("select * from members");
-
-        while (resultSet.next()) {
-            obser.add(new dashtableimp(resultSet.getString("name"),resultSet.getString("lastname")
-                    ,resultSet.getString("enddate")));
 
 
-        }
         dashboardexpirationtable.setItems(obser);
 
     }
@@ -136,6 +151,15 @@ public class mainscreencontroller {
 
 
     }
+
+     public void addnewscene(ActionEvent event) throws IOException {
+         root = FXMLLoader.load((getClass()).getResource("addnewmember-screen.fxml"));
+         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+         scene = new Scene(root);
+         stage.setScene(scene);
+         stage.show();
+
+     }
 
 
 
