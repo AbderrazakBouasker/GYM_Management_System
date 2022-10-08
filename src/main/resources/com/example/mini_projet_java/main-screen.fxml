@@ -12,17 +12,17 @@
 
 <AnchorPane prefHeight="555.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.mainscreencontroller">
    <children>
-      <Button fx:id="maindashboardbutton" layoutX="33.0" layoutY="68.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="90.0" text="Dashboard" />
+      <Button fx:id="maindashboardbutton" layoutX="33.0" layoutY="68.0" mnemonicParsing="false" onAction="#refreshdashboard" prefHeight="41.0" prefWidth="90.0" text="Dashboard" />
       <Button fx:id="mainlistbutton" layoutX="33.0" layoutY="197.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="111.0" text="Members list" />
       <Button fx:id="mainaddbutton" layoutX="33.0" layoutY="320.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
-      <Button fx:id="mainlogoutbutton" layoutX="33.0" layoutY="480.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="74.0" text="Logout" />
+      <Button fx:id="mainlogoutbutton" layoutX="33.0" layoutY="480.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="74.0" text="Logout" />
       <Text layoutX="174.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
       <Accordion layoutX="181.0" layoutY="88.0" />
-      <Pane layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="616.0">
+      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="616.0">
          <children>
             <Text layoutX="64.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly revenue">
                <font>

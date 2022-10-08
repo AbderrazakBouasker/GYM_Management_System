@@ -12,12 +12,6 @@ import java.io.IOException;
 public class mainapp extends Application {
 
 
-
-
-
-
-
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("login-screen.fxml"));
