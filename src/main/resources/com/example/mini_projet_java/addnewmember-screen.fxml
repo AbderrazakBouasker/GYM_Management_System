@@ -62,12 +62,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="submitbutton" layoutX="545.0" layoutY="451.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="99.0" text="Submit">
+      <Button fx:id="submitbutton" layoutX="545.0" layoutY="451.0" mnemonicParsing="false" onAction="#insert" prefHeight="51.0" prefWidth="99.0" text="Submit">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="237.0" layoutY="468.0" prefHeight="30.0" prefWidth="210.0" textFill="RED">
+      <Label fx:id="outlabel" layoutX="237.0" layoutY="468.0" prefHeight="30.0" prefWidth="210.0" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>
