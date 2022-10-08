@@ -1,8 +1,11 @@
 package com.example.mini_projet_java;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,25 +13,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
+import java.util.ResourceBundle;
 
 public class mainscreencontroller {
 
     @FXML
-    private TableView<?> dashboardexpirationtable;
+    private TableView<dashtableimp> dashboardexpirationtable;
 
     @FXML
-    private TableColumn<?, ?> dashboardlistdays;
+    private TableColumn<dashtableimp, Integer> dashboardlistdays;
 
     @FXML
-    private TableColumn<?, ?> dashboardlistlastname;
+    private TableColumn<dashtableimp, String> dashboardlistlastname;
 
     @FXML
-    private TableColumn<?, ?> dashboardlistname;
+    private TableColumn<dashtableimp, String> dashboardlistname;
 
     @FXML
     private Label dashboardmemberslabel;
@@ -67,6 +73,28 @@ public class mainscreencontroller {
     String url="jdbc:mysql://localhost:3306/miniprojdb";
     String user="root";
     String password="24506544";
+
+    ObservableList<dashtableimp> obser = FXCollections.observableArrayList();
+    @Override
+
+    public void initialize(URL ur, ResourceBundle resourceBundle) throws SQLException {
+        dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
+        dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
+
+        Connection connection = DriverManager.getConnection(url,user,password);
+        Statement statement =connection.createStatement();
+        ResultSet resultSet=statement.executeQuery("select * from members");
+
+        while (resultSet.next()) {
+            obser.add(new dashtableimp(resultSet.getString("name"),resultSet.getString("lastname")
+                    ,resultSet.getString("enddate")));
+
+
+        }
+        dashboardexpirationtable.setItems(obser);
+
+    }
 
     public void dbgetmembersinfo() throws SQLException {
         Connection connection = DriverManager.getConnection(url,user,password);
