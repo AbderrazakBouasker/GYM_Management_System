@@ -65,9 +65,9 @@ public class logincontroller {
     String password="24506544";
 
 
-    public void dbgetuserinfo() throws SQLException {
-        String username=usernameinput.getText().toString();
-        String query="select * from logininfo where username=\""+username+ "\"";
+    public void dbgetuserinfo(TextField inputusername) throws SQLException {
+        //String username=usernameinput.getText().toString();
+        String query="select * from logininfo where username=\""+inputusername.getText().toString()+ "\"";
         Connection connection = DriverManager.getConnection(url,user,password);
         Statement statement =connection.createStatement();
         ResultSet resultSet=statement.executeQuery(query);
@@ -87,7 +87,7 @@ public class logincontroller {
 
 
     public void login(ActionEvent event) throws IOException, SQLException {
-        dbgetuserinfo();
+        dbgetuserinfo(usernameinput);
         if(usernameinput.getText().toString().equals(dbusername) && passwordinput.getText().toString().equals(dbuserpassword)){
             root = FXMLLoader.load((getClass()).getResource("main-screen.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -111,7 +111,7 @@ public class logincontroller {
     }
 
     public void recoverinfo(ActionEvent event) throws IOException, SQLException {
-        dbgetuserinfo();
+        dbgetuserinfo(forgotusername);
         if (forgotusername.getText().toString().equals(dbusername) && forgotmovie.getText().toString().equals(dbusermovie) && forgotsong.getText().toString().equals(dbusermusic)){
             forgotpassword.setText(dbuserpassword);
         } else if (forgotusername.getText().isEmpty() && forgotmovie.getText().isEmpty() && forgotsong.getText().isEmpty()) {
