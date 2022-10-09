@@ -175,6 +175,7 @@ public class mainscreencontroller implements Initializable {
 
     public void refreshdashboard(ActionEvent event){
         addmemberpane.setVisible(false);
+        memberslistpanel.setVisible(false);
         dashboardpanel.setVisible(true);
 
         try{
@@ -246,10 +247,17 @@ public class mainscreencontroller implements Initializable {
 
     public void switchadd(ActionEvent event){
         dashboardpanel.setVisible(false);
+        memberslistpanel.setVisible(false);
         addmemberpane.setVisible(true);
 
     }
 
     //members list func
+
+    public void switchlist(ActionEvent event){
+        dashboardpanel.setVisible(false);
+        addmemberpane.setVisible(false);
+        memberslistpanel.setVisible(true);
+    }
 
 }
