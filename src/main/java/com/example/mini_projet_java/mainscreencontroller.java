@@ -58,6 +58,7 @@ public class mainscreencontroller implements Initializable {
     private Pane dashboardpanel;
     @FXML
     private Pane addmemberpane;
+    //addmember dec
 
     @FXML
     private TextField companyinput;
@@ -88,6 +89,10 @@ public class mainscreencontroller implements Initializable {
 
     @FXML
     private Label outlabel;
+    //member list dec
+
+    @FXML
+    private Pane memberslistpanel;
 
 
     private String dbmidnumber;
@@ -205,7 +210,7 @@ public class mainscreencontroller implements Initializable {
 
 
     }
-
+    //addmember func
 
     public void insert(ActionEvent event) throws IOException, SQLException {
         Connection connection = DriverManager.getConnection(url,user,password);
@@ -245,6 +250,6 @@ public class mainscreencontroller implements Initializable {
 
     }
 
-
+    //members list func
 
 }

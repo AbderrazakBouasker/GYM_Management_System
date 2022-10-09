@@ -24,7 +24,7 @@
          </font>
       </Text>
       <Accordion layoutX="181.0" layoutY="88.0" />
-      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="616.0" style="-fx-background-color: #d1d0cd;">
+      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="616.0" style="-fx-background-color: #d1d0cd;" visible="false">
          <children>
             <Text layoutX="64.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly revenue">
                <font>
@@ -122,6 +122,24 @@
                   <Font size="20.0" />
                </font>
             </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="616.0" style="-fx-background-color: #d1d0cd;">
+         <children>
+            <TableView layoutX="6.0" layoutY="6.0" prefHeight="452.0" prefWidth="542.0">
+              <columns>
+                <TableColumn prefWidth="66.0" text="Idnumber" />
+                <TableColumn prefWidth="60.0" text="Name" />
+                  <TableColumn prefWidth="71.0" text="Lastname" />
+                  <TableColumn prefWidth="64.0" text="Company" />
+                  <TableColumn prefWidth="67.0" text="Reduction" />
+                  <TableColumn prefWidth="93.0" text="Start date" />
+                  <TableColumn prefWidth="72.0" text="End date" />
+                  <TableColumn prefWidth="47.0" text="Select" />
+              </columns>
+            </TableView>
+            <Button layoutX="558.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Edit" />
+            <Button layoutX="558.0" layoutY="251.0" mnemonicParsing="false" text="Delete" />
          </children>
       </Pane>
    </children>
