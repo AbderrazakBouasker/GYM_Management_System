@@ -126,16 +126,16 @@
       </Pane>
       <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
          <children>
-            <TableView layoutX="6.0" layoutY="6.0" prefHeight="452.0" prefWidth="869.0">
+            <TableView fx:id="listtableview" layoutX="6.0" layoutY="6.0" prefHeight="452.0" prefWidth="869.0">
               <columns>
-                <TableColumn prefWidth="134.0" text="Idnumber" />
-                <TableColumn prefWidth="158.0" text="Name" />
-                  <TableColumn minWidth="0.0" prefWidth="142.0" text="Lastname" />
-                  <TableColumn prefWidth="141.0" text="Company" />
-                  <TableColumn prefWidth="78.0" text="Reduction" />
-                  <TableColumn prefWidth="81.0" text="Start date" />
-                  <TableColumn prefWidth="87.0" text="End date" />
-                  <TableColumn prefWidth="47.0" text="Select" />
+                <TableColumn fx:id="listtableviewidnumber" prefWidth="123.0" text="Id number" />
+                <TableColumn fx:id="listtableviewname" prefWidth="138.0" text="Name" />
+                  <TableColumn fx:id="listtableviewlasname" minWidth="0.0" prefWidth="146.0" text="Lastname" />
+                  <TableColumn fx:id="listtableviewcompany" prefWidth="123.0" text="Company" />
+                  <TableColumn fx:id="listtableviewreduction" prefWidth="90.0" text="Reduction" />
+                  <TableColumn fx:id="listtableviewstartdate" prefWidth="102.0" text="Start date" />
+                  <TableColumn fx:id="listtableviewenddate" prefWidth="99.0" text="End date" />
+                  <TableColumn fx:id="listtableviewselect" prefWidth="47.0" text="Select" />
               </columns>
             </TableView>
             <Button layoutX="890.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Edit" />

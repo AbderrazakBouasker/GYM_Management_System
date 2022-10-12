@@ -28,7 +28,7 @@ public class mainscreencontroller implements Initializable {
     private TableView<dashtableimp> dashboardexpirationtable;
 
     @FXML
-    private TableColumn<dashtableimp, Integer> dashboardlistdays;
+    private TableColumn<dashtableimp, String> dashboardlistdays;
 
     @FXML
     private TableColumn<dashtableimp, String> dashboardlistlastname;
@@ -93,6 +93,33 @@ public class mainscreencontroller implements Initializable {
 
     @FXML
     private Pane memberslistpanel;
+
+    @FXML
+    private TableView<listtableimp> listtableview;
+
+    @FXML
+    private TableColumn<listtableimp, String> listtableviewcompany;
+
+    @FXML
+    private TableColumn<listtableimp, String> listtableviewenddate;
+
+    @FXML
+    private TableColumn<listtableimp, String > listtableviewidnumber;
+
+    @FXML
+    private TableColumn<listtableimp, String> listtableviewlasname;
+
+    @FXML
+    private TableColumn<listtableimp, String> listtableviewname;
+
+    @FXML
+    private TableColumn<listtableimp, String> listtableviewreduction;
+
+    @FXML
+    private TableColumn<listtableimp, ?> listtableviewselect;
+
+    @FXML
+    private TableColumn<listtableimp, String> listtableviewstartdate;
 
 
     private String dbmidnumber;
@@ -258,6 +285,43 @@ public class mainscreencontroller implements Initializable {
         dashboardpanel.setVisible(false);
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(true);
+
+        ObservableList<listtableimp> observ = FXCollections.observableArrayList();
+        try{
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement statement =connection.createStatement();
+            ResultSet resultSet=statement.executeQuery("select * from members");
+            while (resultSet.next()) {
+                observ.add(new listtableimp(resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
+                        , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
+            }
+
+        }
+        catch (SQLException e){
+            Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
+        }
+
+
+        listtableviewidnumber.setCellValueFactory(new PropertyValueFactory<>("listidnumber"));
+        listtableviewname.setCellValueFactory(new PropertyValueFactory<>("listname"));
+        listtableviewlasname.setCellValueFactory(new PropertyValueFactory<>("listlastname"));
+        listtableviewcompany.setCellValueFactory(new PropertyValueFactory<>("listcompanyname"));
+        listtableviewreduction.setCellValueFactory(new PropertyValueFactory<>("listpricereduction"));
+        listtableviewstartdate.setCellValueFactory(new PropertyValueFactory<>("liststartdate"));
+        listtableviewenddate.setCellValueFactory(new PropertyValueFactory<>("listenddate"));
+
+
+
+
+        listtableview.setItems(observ);
+
+
     }
+
+
+
+
+
+
 
 }
