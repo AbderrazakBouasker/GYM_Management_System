@@ -208,45 +208,51 @@ public class mainscreencontroller implements Initializable {
     public void calctimedif(ActionEvent event) throws SQLException {
         Connection connection = DriverManager.getConnection(url,user,password);
         Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery("select startdate,enddate from members");
-
-        while (resultSet.next()) {
-            dbmstartdate=resultSet.getString("startdate");
-            dbmenddate=resultSet.getString("enddate");
-
-        }
-
+        ResultSet resultSet=statement.executeQuery("select count(id) from members");
+        int lenlist = 0;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            // parse method is used to parse
-            // the text from a string to
-            // produce the date
-            Date d1 = sdf.parse(dbmstartdate);
-            Date d2 = sdf.parse(dbmenddate);
-            // Calucalte time difference
-            // in milliseconds
-            long difference_In_Time = d2.getTime() - d1.getTime();
+        while (resultSet.next()){
+            lenlist= Integer.parseInt(resultSet.getString("count(id)"));
+        }
 
-            // Calucalte time difference in
-            // seconds, minutes, hours, years,
-            // and days
-            long difference_In_Seconds = (difference_In_Time / 1000) % 60;
+        for (int i=1;i<lenlist+1;i++){
 
-            long difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
+            resultSet=statement.executeQuery("select startdate,enddate from members where id="+i);
 
-            long difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
+            while (resultSet.next()) {
+                dbmstartdate=resultSet.getString("startdate");
+                dbmenddate=resultSet.getString("enddate");
 
-            long difference_In_Years = (difference_In_Time / (1000L * 60 * 60 * 24 * 365));
+            }
 
-            long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-            System.out.print("Difference " + "between two dates is: ");
 
-            System.out.println(difference_In_Years + " years, " + difference_In_Days + " days, " + difference_In_Hours + " hours, " + difference_In_Minutes + " minutes, " + difference_In_Seconds + " seconds");
+            try {
+                // parse method is used to parse
+                // the text from a string to
+                // produce the date
+                Date d1 = sdf.parse(dbmstartdate);
+                Date d2 = sdf.parse(dbmenddate);
+                // Calucalte time difference
+                // in milliseconds
+                long difference_In_Time = d2.getTime() - d1.getTime();
+
+                // Calucalte time difference in days
+                long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
+                System.out.print("Difference " + "between two dates is: ");
+
+                System.out.println(difference_In_Days + " days");
+
+            }
+            catch (ParseException e){
+                e.printStackTrace();
+            }
+
 
         }
-        catch (ParseException e){
-            e.printStackTrace();
-        }
+
+
+
+
 
 
     }
