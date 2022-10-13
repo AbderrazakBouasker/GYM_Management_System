@@ -48,11 +48,20 @@ public class creatusercontroller {
     void adduser(ActionEvent event) throws SQLException {
         Connection connection = DriverManager.getConnection(url,user,password);
         Statement statement =connection.createStatement();
-        varname=creatusername.getText();
-        varpass=creatuserpassword.getText();
-        varq1=creatusermovie.getText();
-        varq2=creatusersong.getText();
-        statement.execute("INSERT INTO `miniprojdb`.`logininfo` (`id`, `username`, `password`, `qmovie`, `qmusic`) VALUES (null, "+"'"+varname+", "+varpass+", "+varq1+", "+varq2+")");
+        if(creatusername.getText().isEmpty()||creatuserpassword.getText().isEmpty()||creatusermovie.getText().isEmpty()||creatusersong.getText().isEmpty()){
+
+            creatlabel.setText("Fill all fields");
+        }
+        else {
+            varname=creatusername.getText();
+            varpass=creatuserpassword.getText();
+            varq1=creatusermovie.getText();
+            varq2=creatusersong.getText();
+            statement.execute("INSERT INTO `miniprojdb`.`logininfo` (`id`, `username`, `password`, `qmovie`, `qmusic`) VALUES (null, \'"+varname+"\', \'"+varpass+"\', \'"+varq1+"\', \'"+varq2+"\')");
+            creatsubmitbutton.setDisable(true);
+            creatlabel.setText("");
+        }
+
 
 
 
