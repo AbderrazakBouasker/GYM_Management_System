@@ -253,7 +253,7 @@ public class mainscreencontroller implements Initializable {
         String varidnumber=idnumberinput.getText();
         //dbgetidnumber(idnumberinput);
 
-        if (nameinput.getText().isEmpty() && lastnameinput.getText().isEmpty() && idnumberinput.getText().isEmpty() && startdate==null && enddate==null){
+        if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null){
             outlabel.setText("Fill all necessary fields");
         /*} else if (numberid.equals(idnumberinput)) {
             outlabel.setText("user already exist");*/
