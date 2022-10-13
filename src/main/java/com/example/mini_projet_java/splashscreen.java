@@ -37,11 +37,18 @@ public class splashscreen implements Initializable {
             @Override
             public void run() {
                 System.out.println("sisalasalazesqldqsd");
-                //root = FXMLLoader.load((getClass()).getResource("main-screen.fxml"));
-                stage = (Stage)pane.getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(splashscreen.class.getResource("login-screen.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                // Hide this current window (if this is what you want)
+                //((Node)(event.getSource())).getScene().getWindow().hide();
 
             }
         };

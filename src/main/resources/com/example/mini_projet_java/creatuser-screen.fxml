@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.creatusercontroller">
    <children>
       <Text layoutX="157.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creat new account">
          <font>
@@ -45,7 +44,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="creatsubmitbutton" layoutX="336.0" layoutY="330.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="119.0" text="Submit">
+      <Button fx:id="creatsubmitbutton" layoutX="336.0" layoutY="330.0" mnemonicParsing="false" onAction="#adduser" prefHeight="30.0" prefWidth="119.0" text="Submit">
          <font>
             <Font size="15.0" />
          </font>

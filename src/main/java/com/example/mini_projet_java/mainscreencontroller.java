@@ -261,12 +261,12 @@ public class mainscreencontroller implements Initializable {
             String varstartdate=startdate.toString();
             String varenddate=enddate.toString();
             if(companyinput.getText().isEmpty()){
-                varcompany=null;
+                varcompany="null";
             }
             if(reductioninput.getText().isEmpty()){
                 varpayment=null;
             }
-            statement.execute("insert into members values (id,"+varidnumber+",\""+varname+"\",\""+varlastname+"\",\""+varcompany+"\","+varpayment+",\""+varstartdate+"\",\""+varenddate+"\")");
+            statement.execute("insert into members values (id,"+varidnumber+",\""+varname+"\",\""+varlastname+"\","+varcompany+","+varpayment+",\""+varstartdate+"\",\""+varenddate+"\")");
             outlabel.setText("");
         }
 
