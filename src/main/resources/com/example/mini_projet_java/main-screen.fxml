@@ -18,7 +18,7 @@
       <Button fx:id="mainlistbutton" layoutX="19.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchlist" prefHeight="41.0" prefWidth="111.0" text="Members list" />
       <Button fx:id="mainaddbutton" layoutX="19.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchadd" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
       <Button fx:id="mainlogoutbutton" layoutX="19.0" layoutY="480.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="74.0" text="Logout" />
-      <Text layoutX="337.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
+      <Text layoutX="439.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font>
@@ -142,5 +142,6 @@
             <Button layoutX="890.0" layoutY="246.0" mnemonicParsing="false" text="Delete" />
          </children>
       </Pane>
+      <Button fx:id="test" layoutX="224.0" layoutY="31.0" mnemonicParsing="false" onAction="#calctimedif" text="Button" />
    </children>
 </AnchorPane>

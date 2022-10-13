@@ -17,10 +17,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class mainscreencontroller implements Initializable {
 
@@ -199,6 +204,53 @@ public class mainscreencontroller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    private Button test;
+    public void calctimedif(ActionEvent event) throws SQLException {
+        Connection connection = DriverManager.getConnection(url,user,password);
+        Statement statement =connection.createStatement();
+        ResultSet resultSet=statement.executeQuery("select startdate,enddate from members");
+
+        while (resultSet.next()) {
+            dbmstartdate=resultSet.getString("startdate");
+            dbmenddate=resultSet.getString("enddate");
+
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            // parse method is used to parse
+            // the text from a string to
+            // produce the date
+            Date d1 = sdf.parse(dbmstartdate);
+            Date d2 = sdf.parse(dbmenddate);
+            // Calucalte time difference
+            // in milliseconds
+            long difference_In_Time = d2.getTime() - d1.getTime();
+
+            // Calucalte time difference in
+            // seconds, minutes, hours, years,
+            // and days
+            long difference_In_Seconds = (difference_In_Time / 1000) % 60;
+
+            long difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
+
+            long difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
+
+            long difference_In_Years = (difference_In_Time / (1000L * 60 * 60 * 24 * 365));
+
+            long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
+            System.out.print("Difference " + "between two dates is: ");
+
+            System.out.println(difference_In_Years + " years, " + difference_In_Days + " days, " + difference_In_Hours + " hours, " + difference_In_Minutes + " minutes, " + difference_In_Seconds + " seconds");
+
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     public void refreshdashboard(ActionEvent event){
         addmemberpane.setVisible(false);
