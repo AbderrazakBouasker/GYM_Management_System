@@ -241,7 +241,7 @@ public class mainscreencontroller implements Initializable {
                 System.out.print("Difference " + "between two dates is: ");
 
                 System.out.println(difference_In_Days + " days");
-
+                ///if differnceindays<= 3 obser.add or fill all info in list then insert into tableview
             }
             catch (ParseException e){
                 e.printStackTrace();
@@ -268,6 +268,7 @@ public class mainscreencontroller implements Initializable {
             Statement statement =connection.createStatement();
             ResultSet resultSet=statement.executeQuery("select * from members");
             while (resultSet.next()) {
+                //variables date&i counter ,calcule,if
                 obser.add(new dashtableimp(resultSet.getString("name"),resultSet.getString("lastname")
                         ,resultSet.getString("enddate")));
             }
