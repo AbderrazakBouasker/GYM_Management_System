@@ -39,12 +39,17 @@
       <TextField fx:id="creatusermovie" layoutX="300.0" layoutY="219.0" prefHeight="25.0" prefWidth="191.0" promptText="movie" />
       <TextField fx:id="creatusersong" layoutX="301.0" layoutY="281.0" prefHeight="25.0" prefWidth="191.0" promptText="song" />
       <PasswordField fx:id="creatuserpassword" layoutX="300.0" layoutY="158.0" prefHeight="25.0" prefWidth="191.0" promptText="password" />
-      <Label fx:id="creatlabel" layoutX="102.0" layoutY="330.0" prefHeight="17.0" prefWidth="174.0" textFill="RED">
+      <Label fx:id="creatlabel" layoutX="203.0" layoutY="331.0" prefHeight="17.0" prefWidth="174.0" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="creatsubmitbutton" layoutX="336.0" layoutY="330.0" mnemonicParsing="false" onAction="#adduser" prefHeight="30.0" prefWidth="119.0" text="Submit">
+      <Button fx:id="creatsubmitbutton" layoutX="410.0" layoutY="330.0" mnemonicParsing="false" onAction="#adduser" prefHeight="30.0" prefWidth="119.0" text="Submit">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="creatlogin" layoutX="60.0" layoutY="331.0" mnemonicParsing="false" onAction="#switchlogin" prefHeight="31.0" prefWidth="119.0" text="Login">
          <font>
             <Font size="15.0" />
          </font>
