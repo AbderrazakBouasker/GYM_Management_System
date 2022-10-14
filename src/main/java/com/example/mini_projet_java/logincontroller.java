@@ -93,7 +93,7 @@ public class logincontroller {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else if (usernameinput.getText().isEmpty() && passwordinput.getText().isEmpty()) {
+        } else if (usernameinput.getText().isEmpty() || passwordinput.getText().isEmpty()) {
             wronginfo.setText("Please enter your info");
         }
         else {
@@ -113,7 +113,7 @@ public class logincontroller {
         dbgetuserinfo(forgotusername);
         if (forgotusername.getText().toString().equals(dbusername) && forgotmovie.getText().toString().equals(dbusermovie) && forgotsong.getText().toString().equals(dbusermusic)){
             forgotpassword.setText(dbuserpassword);
-        } else if (forgotusername.getText().isEmpty() && forgotmovie.getText().isEmpty() && forgotsong.getText().isEmpty()) {
+        } else if (forgotusername.getText().isEmpty() || forgotmovie.getText().isEmpty() || forgotsong.getText().isEmpty()) {
             forgotpassword.setText("Please answer the questions");
         } else{
             forgotpassword.setText("Wrong answers");

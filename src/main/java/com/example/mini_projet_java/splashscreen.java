@@ -1,5 +1,6 @@
 package com.example.mini_projet_java;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ public class splashscreen implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    Stage s;
     @FXML
     private AnchorPane pane;
 
@@ -32,31 +34,6 @@ public class splashscreen implements Initializable {
 
     /*timer();
     System.out.println("waa333333");*/
-        Timer timer = new Timer();
-        TimerTask task=new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("sisalasalazesqldqsd");
-
-                try {
-                    FXMLLoader fxmlLoader = new FXMLLoader(splashscreen.class.getResource("login-screen.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load());
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                // Hide this current window (if this is what you want)
-                //((Node)(event.getSource())).getScene().getWindow().hide();
-
-            }
-        };
-
-        timer.schedule(task, 2000);
-
-
-
 
 
 
