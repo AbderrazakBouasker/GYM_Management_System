@@ -11,6 +11,7 @@ public class Logindao {
     String dbusername;
     String dbusermovie;
     String dbusermusic;
+    String checkres;
 
 
 
@@ -25,7 +26,6 @@ public class Logindao {
     }
 
     public void dbgetuserinfo(TextField inputusername) throws SQLException {
-        //String username=usernameinput.getText().toString();
         String query="select * from logininfo where username=\""+inputusername.getText().toString()+ "\"";
         ResultSet resultSet=statement.executeQuery(query);
 
@@ -36,6 +36,19 @@ public class Logindao {
             dbusermusic=resultSet.getString("qmusic");
 
         }
+    }
+
+    public boolean dbcheckexist() throws SQLException {
+        String query="select count(*) from logininfo";
+        ResultSet resultSet=statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            checkres=resultSet.getString("count(*)");
+        }
+        if(checkres.equals("0")){
+            return true;
+        }
+        return false;
     }
 
     public String getDbuserpassword() {

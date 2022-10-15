@@ -1,5 +1,6 @@
 package com.example.mini_projet_java;
 
+import dao.Logindao;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ public class mainapp extends Application {
     Stage s;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("loading-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("gym manager");
@@ -25,28 +26,58 @@ public class mainapp extends Application {
         stage.setScene(scene);
         stage.show();
 
+        Logindao logindao =new Logindao();
+        boolean checkres;
+
         Timer timer = new Timer();
         TimerTask task=new TimerTask() {
             @Override
-            public void run() {
-                System.out.println("sisalasalazesqldqsd");
+            public void run()  {
 
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            s=new Stage();
-                            FXMLLoader fxmlLoader = new FXMLLoader(splashscreen.class.getResource("login-screen.fxml"));
-                            Scene scene = new Scene(fxmlLoader.load());
-                            s.setScene(scene);
-                            s.show();
-                            stage.hide();
+                try {
+                    if(logindao.dbcheckexist()){
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    s=new Stage();
+                                    FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("creatuser-screen.fxml"));
+                                    Scene scene = new Scene(fxmlLoader.load());
+                                    s.setScene(scene);
+                                    s.show();
+                                    stage.hide();
 
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        });
+
                     }
-                });
+                    else{
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    s=new Stage();
+                                    FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("login-screen.fxml"));
+                                    Scene scene = new Scene(fxmlLoader.load());
+                                    s.setScene(scene);
+                                    s.show();
+                                    stage.hide();
+
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        });
+                    }
+
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+
 
 
                 // Hide this current window (if this is what you want)
