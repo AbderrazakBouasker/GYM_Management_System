@@ -1,7 +1,6 @@
 package com.example.mini_projet_java;
 
 import dao.Mainscreendao;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,14 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 public class mainscreencontroller implements Initializable {
 
@@ -127,30 +121,16 @@ public class mainscreencontroller implements Initializable {
     @FXML
     private TableColumn<listtableimp, String> listtableviewstartdate;
 
-
-    private String dbmidnumber;
-    private String dbmname;
-    private String dbmlastname;
-    private String dbmcompanyname;
-    private String dbmpaymentreduction;
-    private String dbmstartdate;
-    private String dbmenddate;
-    private String membersnumber;
-
-    private Stage stage;
-    private Scene scene;
     private Parent root;
+    Mainscreendao mainscreendao=new Mainscreendao();
+    Scenechange scenechange=new Scenechange();
+    public mainscreencontroller() throws SQLException {
+    }
 
-    String url="jdbc:mysql://localhost:3306/miniprojdb";
-    String user="root";
-    String password="24506544";
-
-    ObservableList<dashtableimp> obser = FXCollections.observableArrayList();
     @Override
 
     public void initialize(URL ur, ResourceBundle resourceBundle) {
         try {
-            Mainscreendao mainscreendao=new Mainscreendao();
             dashboardmemberslabel.setText(mainscreendao.getmemcount());
             ObservableList<dashtableimp> obser = null;
             obser = mainscreendao.dashtablefill();
@@ -164,17 +144,13 @@ public class mainscreencontroller implements Initializable {
     }
     public void logout(ActionEvent event) throws IOException {
         root = FXMLLoader.load((getClass()).getResource("login-screen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        scenechange.changesceneto(root,event);
     }
 
     public void refreshdashboard(ActionEvent event) throws SQLException, ParseException {
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(false);
         dashboardpanel.setVisible(true);
-        Mainscreendao mainscreendao=new Mainscreendao();
         dashboardmemberslabel.setText(mainscreendao.getmemcount());
         ObservableList<dashtableimp> obser =mainscreendao.dashtablefill();
         dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -185,8 +161,6 @@ public class mainscreencontroller implements Initializable {
     //addmember func
 
     public void insert(ActionEvent event) throws SQLException {
-
-        Mainscreendao mainscreendao= new Mainscreendao();
         LocalDate startdate=startdateinput.getValue();
         LocalDate enddate=enddateinput.getValue();
         String varcompany=companyinput.getText();
@@ -200,9 +174,6 @@ public class mainscreencontroller implements Initializable {
         } else{
             String varstartdate=startdate.toString();
             String varenddate=enddate.toString();
-            /*if(companyinput.getText().isEmpty()){
-                varcompany=null;
-            }*/
             if(reductioninput.getText().isEmpty()){
                 varpayment=null;
             }
@@ -225,7 +196,6 @@ public class mainscreencontroller implements Initializable {
         dashboardpanel.setVisible(false);
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(true);
-        Mainscreendao mainscreendao=new Mainscreendao();
         ObservableList<listtableimp> observ =mainscreendao.getinfo();
         listtableviewidnumber.setCellValueFactory(new PropertyValueFactory<>("listidnumber"));
         listtableviewname.setCellValueFactory(new PropertyValueFactory<>("listname"));
@@ -236,11 +206,4 @@ public class mainscreencontroller implements Initializable {
         listtableviewenddate.setCellValueFactory(new PropertyValueFactory<>("listenddate"));
         listtableview.setItems(observ);
     }
-
-
-
-
-
-
-
 }

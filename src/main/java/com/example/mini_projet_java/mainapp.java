@@ -27,7 +27,6 @@ public class mainapp extends Application {
         stage.show();
 
         Logindao logindao =new Logindao();
-        boolean checkres;
 
         Timer timer = new Timer();
         TimerTask task=new TimerTask() {
@@ -76,12 +75,6 @@ public class mainapp extends Application {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-
-
-
-
-                // Hide this current window (if this is what you want)
-                //((Node)(event.getSource())).getScene().getWindow().hide();
 
             }
         };

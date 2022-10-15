@@ -5,12 +5,8 @@ import dao.Logindao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.*;
 
@@ -48,24 +44,21 @@ public class logincontroller {
 
     @FXML
     private Button forgotsubmit;
-
-    private Stage stage;
-    private Scene scene;
     private Parent root;
 
 
 
+    Scenechange scenechange=new Scenechange();
+    Logindao logindao=new Logindao();
+
+    public logincontroller() throws SQLException {
+    }
 
     public void login(ActionEvent event) throws IOException, SQLException {
-        Logindao logindao=new Logindao();
         logindao.dbgetuserinfo(usernameinput);
-
         if(usernameinput.getText().equals(logindao.getDbusername()) && passwordinput.getText().equals(logindao.getDbuserpassword())){
             root = FXMLLoader.load((getClass()).getResource("main-screen.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            scenechange.changesceneto(root,event);
         } else if (usernameinput.getText().isEmpty() || passwordinput.getText().isEmpty()) {
             wronginfo.setText("Please enter your info");
         }
@@ -76,14 +69,10 @@ public class logincontroller {
 
     public void forgotinfo(ActionEvent event) throws IOException {
         root = FXMLLoader.load((getClass()).getResource("recover-screen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        scenechange.changesceneto(root,event);
     }
 
     public void recoverinfo(ActionEvent event) throws SQLException {
-        Logindao logindao=new Logindao();
         logindao.dbgetuserinfo(forgotusername);
         if (forgotusername.getText().isEmpty() || forgotmovie.getText().isEmpty() || forgotsong.getText().isEmpty()) {
             forgotpassword.setText("Please answer the questions");
@@ -97,15 +86,6 @@ public class logincontroller {
 
     public void gologinscene(ActionEvent event) throws IOException {
         root = FXMLLoader.load((getClass()).getResource("login-screen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        scenechange.changesceneto(root,event);
     }
-
-
-
-
-
-
 }
