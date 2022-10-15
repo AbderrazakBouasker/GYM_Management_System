@@ -1,6 +1,7 @@
 package com.example.mini_projet_java;
 
 
+import dao.Logindao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,17 +55,17 @@ public class logincontroller {
     private Scene scene;
     private Parent root;
 
-    private String dbusername;
+    /*private String dbusername;
     private String dbuserpassword;
     private String dbusermovie;
-    private String dbusermusic;
+    private String dbusermusic;*/
 
-    String url="jdbc:mysql://localhost:3306/miniprojdb";
+    /*String url="jdbc:mysql://localhost:3306/miniprojdb";
     String user="root";
-    String password="24506544";
+    String password="24506544";*/
 
 
-    public void dbgetuserinfo(TextField inputusername) throws SQLException {
+    /*public void dbgetuserinfo(TextField inputusername) throws SQLException {
         //String username=usernameinput.getText().toString();
         String query="select * from logininfo where username=\""+inputusername.getText().toString()+ "\"";
         Connection connection = DriverManager.getConnection(url,user,password);
@@ -78,7 +79,7 @@ public class logincontroller {
             dbusermusic=resultSet.getString("qmusic");
 
         }
-    }
+    }*/
 
 
 
@@ -86,8 +87,11 @@ public class logincontroller {
 
 
     public void login(ActionEvent event) throws IOException, SQLException {
-        dbgetuserinfo(usernameinput);
-        if(usernameinput.getText().toString().equals(dbusername) && passwordinput.getText().toString().equals(dbuserpassword)){
+        //dbgetuserinfo(usernameinput);
+        Logindao logindao=new Logindao();
+        logindao.dbgetuserinfo(usernameinput);
+
+        if(usernameinput.getText().equals(logindao.getDbusername()) && passwordinput.getText().equals(logindao.getDbuserpassword())){
             root = FXMLLoader.load((getClass()).getResource("main-screen.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -110,12 +114,15 @@ public class logincontroller {
     }
 
     public void recoverinfo(ActionEvent event) throws IOException, SQLException {
-        dbgetuserinfo(forgotusername);
-        if (forgotusername.getText().toString().equals(dbusername) && forgotmovie.getText().toString().equals(dbusermovie) && forgotsong.getText().toString().equals(dbusermusic)){
-            forgotpassword.setText(dbuserpassword);
-        } else if (forgotusername.getText().isEmpty() || forgotmovie.getText().isEmpty() || forgotsong.getText().isEmpty()) {
+        //dbgetuserinfo(forgotusername);
+        Logindao logindao=new Logindao();
+        logindao.dbgetuserinfo(forgotusername);
+        if (forgotusername.getText().isEmpty() || forgotmovie.getText().isEmpty() || forgotsong.getText().isEmpty()) {
             forgotpassword.setText("Please answer the questions");
-        } else{
+        }
+        else if (forgotusername.getText().equals(logindao.getDbusername()) && forgotmovie.getText().equals(logindao.getDbusermovie()) && forgotsong.getText().equals(logindao.getDbusermusic())){
+            forgotpassword.setText(logindao.getDbuserpassword());
+        }  else{
             forgotpassword.setText("Wrong answers");
         }
     }
@@ -128,11 +135,7 @@ public class logincontroller {
         stage.show();
     }
 
-    /*public void insert(ActionEvent event) throws IOException,SQLException {
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
-        statement.execute("insert into logininfo values (default,\"mohsen\",147852369,\"avenger\",\"avenger2\");");
-    }*/
+
 
 
 
