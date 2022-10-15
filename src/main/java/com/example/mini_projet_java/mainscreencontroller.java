@@ -1,5 +1,6 @@
 package com.example.mini_projet_java;
 
+import dao.Mainscreendao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -299,10 +300,9 @@ public class mainscreencontroller implements Initializable {
     }
     //addmember func
 
-    public void insert(ActionEvent event) throws IOException, SQLException {
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
+    public void insert(ActionEvent event) throws SQLException {
 
+        Mainscreendao mainscreendao= new Mainscreendao();
         LocalDate startdate=startdateinput.getValue();
         LocalDate enddate=enddateinput.getValue();
         String varcompany=companyinput.getText();
@@ -310,22 +310,19 @@ public class mainscreencontroller implements Initializable {
         String varname=nameinput.getText();
         String varlastname=lastnameinput.getText();
         String varidnumber=idnumberinput.getText();
-        //dbgetidnumber(idnumberinput);
 
         if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null){
             outlabel.setText("Fill all necessary fields");
-        /*} else if (numberid.equals(idnumberinput)) {
-            outlabel.setText("user already exist");*/
         } else{
             String varstartdate=startdate.toString();
             String varenddate=enddate.toString();
-            if(companyinput.getText().isEmpty()){
-                varcompany="null";
-            }
+            /*if(companyinput.getText().isEmpty()){
+                varcompany=null;
+            }*/
             if(reductioninput.getText().isEmpty()){
                 varpayment=null;
             }
-            statement.execute("insert into members values (id,"+varidnumber+",\""+varname+"\",\""+varlastname+"\","+varcompany+","+varpayment+",\""+varstartdate+"\",\""+varenddate+"\")");
+            mainscreendao.insertnew(varidnumber,varname,varlastname,varcompany,varpayment,varstartdate,varenddate);
             outlabel.setText("");
         }
 
