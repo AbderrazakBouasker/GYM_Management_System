@@ -1,6 +1,9 @@
 package dao;
 
 import com.example.mini_projet_java.bdconnection;
+import com.example.mini_projet_java.listtableimp;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 
@@ -34,19 +37,23 @@ public class Mainscreendao {
 
     }
 
-    public void getinfo() throws SQLException {
+    public ObservableList<listtableimp> getinfo() throws SQLException {
         ResultSet resultSet=statement.executeQuery("select * from members");
+        ObservableList<listtableimp> observ = FXCollections.observableArrayList();
         while (resultSet.next()){
 
-            idnumber=resultSet.getString("idnumber");
+            /*idnumber=resultSet.getString("idnumber");
             name=resultSet.getString("name");
             lastname=resultSet.getString("lastname");
             company=resultSet.getString("companyname");
             reduction=resultSet.getString("paymentreduction");
             startdate=resultSet.getString("startdate");
-            enddate=resultSet.getString("enddate");
+            enddate=resultSet.getString("enddate");*/
+            observ.add(new listtableimp(resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
+                            , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
 
         }
+        return observ;
     }
 
     public String getIdnumber() {

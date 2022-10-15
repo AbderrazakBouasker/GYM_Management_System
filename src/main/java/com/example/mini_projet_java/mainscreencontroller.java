@@ -342,25 +342,7 @@ public class mainscreencontroller implements Initializable {
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(true);
         Mainscreendao mainscreendao=new Mainscreendao();
-        mainscreendao.getinfo();
-        ObservableList<listtableimp> observ = FXCollections.observableArrayList();
-        observ.add(new listtableimp(mainscreendao.getIdnumber().toString(),mainscreendao.getName(),mainscreendao.getLastname(),mainscreendao.getCompany(),mainscreendao.getReduction(),mainscreendao.getStartdate(),mainscreendao.getEnddate()));
-
-        //try{
-            //Connection connection = DriverManager.getConnection(url,user,password);
-            //Statement statement =connection.createStatement();
-            //ResultSet resultSet=statement.executeQuery("select * from members");
-            //while (resultSet.next()) {
-                //observ.add(new listtableimp(resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
-                //        , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
-            //}
-
-        //}
-        //catch (SQLException e){
-         //   Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
-        //}
-
-
+        ObservableList<listtableimp> observ =mainscreendao.getinfo();
         listtableviewidnumber.setCellValueFactory(new PropertyValueFactory<>("listidnumber"));
         listtableviewname.setCellValueFactory(new PropertyValueFactory<>("listname"));
         listtableviewlasname.setCellValueFactory(new PropertyValueFactory<>("listlastname"));
@@ -368,13 +350,7 @@ public class mainscreencontroller implements Initializable {
         listtableviewreduction.setCellValueFactory(new PropertyValueFactory<>("listpricereduction"));
         listtableviewstartdate.setCellValueFactory(new PropertyValueFactory<>("liststartdate"));
         listtableviewenddate.setCellValueFactory(new PropertyValueFactory<>("listenddate"));
-
-
-
-
         listtableview.setItems(observ);
-
-
     }
 
 
