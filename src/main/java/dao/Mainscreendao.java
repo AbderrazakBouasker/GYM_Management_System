@@ -1,14 +1,19 @@
 package dao;
 
 import com.example.mini_projet_java.bdconnection;
+import com.example.mini_projet_java.dashtableimp;
 import com.example.mini_projet_java.listtableimp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Mainscreendao {
     Statement statement=null;
+
 
 
 
@@ -20,6 +25,43 @@ public class Mainscreendao {
 
         }
 
+    }
+
+    public ObservableList<dashtableimp> dashtablefill() throws SQLException, ParseException {
+        ObservableList<dashtableimp> obser = FXCollections.observableArrayList();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String query="select * from members";
+        ResultSet resultSet= statement.executeQuery(query);
+        String name;
+        String lastname;
+        String startdate;
+        String enddate;
+        while (resultSet.next()){
+            name=resultSet.getString("name");
+            lastname=resultSet.getString("lastname");
+            startdate=resultSet.getString("startdate");
+            enddate=resultSet.getString("enddate");
+            Date d1 = sdf.parse(startdate);
+            Date d2 = sdf.parse(enddate);
+            long difference_In_Time = d2.getTime() - d1.getTime();
+            long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
+            if (difference_In_Days<=3){
+                obser.add(new dashtableimp(name,lastname,enddate));
+            }
+        }
+        return obser;
+    }
+
+
+    public String getmemcount() throws SQLException {
+        ResultSet resultSet = statement.executeQuery("select count(id) from members");
+
+        String membersnumber = null;
+        while (resultSet.next()) {
+            membersnumber = resultSet.getString("count(id)");
+
+        }
+        return membersnumber;
     }
 
 

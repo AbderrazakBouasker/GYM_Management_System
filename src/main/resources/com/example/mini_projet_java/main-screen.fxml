@@ -142,6 +142,5 @@
             <Button layoutX="890.0" layoutY="246.0" mnemonicParsing="false" text="Delete" />
          </children>
       </Pane>
-      <Button fx:id="test" layoutX="224.0" layoutY="31.0" mnemonicParsing="false" onAction="#calctimedif" text="Button" />
    </children>
 </AnchorPane>

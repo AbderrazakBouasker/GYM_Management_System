@@ -149,55 +149,19 @@ public class mainscreencontroller implements Initializable {
     @Override
 
     public void initialize(URL ur, ResourceBundle resourceBundle) {
-        try{
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery("select * from members");
-            while (resultSet.next()) {
-                obser.add(new dashtableimp(resultSet.getString("name"),resultSet.getString("lastname")
-                        ,resultSet.getString("enddate")));
-            }
-            resultSet=statement.executeQuery("select count(idnumber) from members");
-
-            while (resultSet.next()) {
-                membersnumber=resultSet.getString("count(idnumber)");
-
-            }
-            dashboardmemberslabel.setText(membersnumber);
+        try {
+            Mainscreendao mainscreendao=new Mainscreendao();
+            dashboardmemberslabel.setText(mainscreendao.getmemcount());
+            ObservableList<dashtableimp> obser = null;
+            obser = mainscreendao.dashtablefill();
+            dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
+            dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+            dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
+            dashboardexpirationtable.setItems(obser);
+        } catch (SQLException | ParseException e) {
+            throw new RuntimeException(e);
         }
-        catch (SQLException e){
-            Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
-        }
-
-
-        dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
-        dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-        dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
-
-
-
-        dashboardexpirationtable.setItems(obser);
-
     }
-
-    /*public void dbgetmembersinfo() throws SQLException {
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery("select * from members");
-
-        while (resultSet.next()) {
-            dbmidnumber=resultSet.getString("idnumber");
-            dbmname=resultSet.getString("name");
-            dbmlastname=resultSet.getString("lastname");
-            dbmcompanyname=resultSet.getString("companyname");
-            dbmpaymentreduction=resultSet.getString("paymentreduction");
-            dbmstartdate=resultSet.getString("startdate");
-            dbmenddate=resultSet.getString("enddate");
-
-        }
-    }*/
-
-
     public void logout(ActionEvent event) throws IOException {
         root = FXMLLoader.load((getClass()).getResource("login-screen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -205,98 +169,18 @@ public class mainscreencontroller implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    private Button test;
-    public void calctimedif(ActionEvent event) throws SQLException {
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery("select count(id) from members");
-        int lenlist = 0;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        while (resultSet.next()){
-            lenlist= Integer.parseInt(resultSet.getString("count(id)"));
-        }
 
-        for (int i=1;i<lenlist+1;i++){
-
-            resultSet=statement.executeQuery("select startdate,enddate from members where id="+i);
-
-            while (resultSet.next()) {
-                dbmstartdate=resultSet.getString("startdate");
-                dbmenddate=resultSet.getString("enddate");
-
-            }
-
-
-            try {
-                // parse method is used to parse
-                // the text from a string to
-                // produce the date
-                Date d1 = sdf.parse(dbmstartdate);
-                Date d2 = sdf.parse(dbmenddate);
-                // Calucalte time difference
-                // in milliseconds
-                long difference_In_Time = d2.getTime() - d1.getTime();
-
-                // Calucalte time difference in days
-                long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-                System.out.print("Difference " + "between two dates is: ");
-
-                System.out.println(difference_In_Days + " days");
-                ///if differnceindays<= 3 obser.add or fill all info in list then insert into tableview
-            }
-            catch (ParseException e){
-                e.printStackTrace();
-            }
-
-
-        }
-
-
-
-
-
-
-    }
-
-
-    public void refreshdashboard(ActionEvent event){
+    public void refreshdashboard(ActionEvent event) throws SQLException, ParseException {
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(false);
         dashboardpanel.setVisible(true);
-
-        try{
-            Connection connection = DriverManager.getConnection(url,user,password);
-            Statement statement =connection.createStatement();
-            ResultSet resultSet=statement.executeQuery("select * from members");
-            while (resultSet.next()) {
-                //variables date&i counter ,calcule,if
-                obser.add(new dashtableimp(resultSet.getString("name"),resultSet.getString("lastname")
-                        ,resultSet.getString("enddate")));
-            }
-            resultSet=statement.executeQuery("select count(idnumber) from members");
-
-            while (resultSet.next()) {
-                membersnumber=resultSet.getString("count(idnumber)");
-
-            }
-            dashboardmemberslabel.setText(membersnumber);
-        }
-        catch (SQLException e){
-            Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
-        }
-
-
+        Mainscreendao mainscreendao=new Mainscreendao();
+        dashboardmemberslabel.setText(mainscreendao.getmemcount());
+        ObservableList<dashtableimp> obser =mainscreendao.dashtablefill();
         dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
         dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
-
-
-
         dashboardexpirationtable.setItems(obser);
-
-
-
-
     }
     //addmember func
 
