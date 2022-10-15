@@ -1,5 +1,6 @@
 package com.example.mini_projet_java;
 
+import dao.Creatuserdao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,17 +14,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class creatusercontroller {
-
-    String url="jdbc:mysql://localhost:3306/miniprojdb";
-    String user="root";
-    String password="24506544";
-
 
     @FXML
     private Label creatlabel;
@@ -58,8 +51,7 @@ public class creatusercontroller {
 
     @FXML
     void adduser(ActionEvent event) throws SQLException {
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
+        Creatuserdao creatuserdao=new Creatuserdao();
         if(creatusername.getText().isEmpty()||creatuserpassword.getText().isEmpty()||creatusermovie.getText().isEmpty()||creatusersong.getText().isEmpty()){
 
             creatlabel.setText("Fill all fields");
@@ -69,7 +61,7 @@ public class creatusercontroller {
             varpass=creatuserpassword.getText();
             varq1=creatusermovie.getText();
             varq2=creatusersong.getText();
-            statement.execute("INSERT INTO `miniprojdb`.`logininfo` (`id`, `username`, `password`, `qmovie`, `qmusic`) VALUES (null, \'"+varname+"\', \'"+varpass+"\', \'"+varq1+"\', \'"+varq2+"\')");
+            creatuserdao.add(varname,varpass,varq1,varq2);
             creatsubmitbutton.setDisable(true);
             creatlabel.setText("");
         }

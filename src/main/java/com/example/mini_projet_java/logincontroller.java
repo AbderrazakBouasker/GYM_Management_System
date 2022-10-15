@@ -49,45 +49,14 @@ public class logincontroller {
     @FXML
     private Button forgotsubmit;
 
-
-
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    /*private String dbusername;
-    private String dbuserpassword;
-    private String dbusermovie;
-    private String dbusermusic;*/
-
-    /*String url="jdbc:mysql://localhost:3306/miniprojdb";
-    String user="root";
-    String password="24506544";*/
-
-
-    /*public void dbgetuserinfo(TextField inputusername) throws SQLException {
-        //String username=usernameinput.getText().toString();
-        String query="select * from logininfo where username=\""+inputusername.getText().toString()+ "\"";
-        Connection connection = DriverManager.getConnection(url,user,password);
-        Statement statement =connection.createStatement();
-        ResultSet resultSet=statement.executeQuery(query);
-
-        while (resultSet.next()) {
-            dbuserpassword=resultSet.getString("password");
-            dbusername=resultSet.getString("username");
-            dbusermovie=resultSet.getString("qmovie");
-            dbusermusic=resultSet.getString("qmusic");
-
-        }
-    }*/
-
-
 
 
 
 
     public void login(ActionEvent event) throws IOException, SQLException {
-        //dbgetuserinfo(usernameinput);
         Logindao logindao=new Logindao();
         logindao.dbgetuserinfo(usernameinput);
 
@@ -113,8 +82,7 @@ public class logincontroller {
         stage.show();
     }
 
-    public void recoverinfo(ActionEvent event) throws IOException, SQLException {
-        //dbgetuserinfo(forgotusername);
+    public void recoverinfo(ActionEvent event) throws SQLException {
         Logindao logindao=new Logindao();
         logindao.dbgetuserinfo(forgotusername);
         if (forgotusername.getText().isEmpty() || forgotmovie.getText().isEmpty() || forgotsong.getText().isEmpty()) {

@@ -39,7 +39,7 @@ public class Logindao {
     }
 
     public boolean dbcheckexist() throws SQLException {
-        String query="select count(*) from logininfo";
+        String query="select count(*) from test";
         ResultSet resultSet=statement.executeQuery(query);
 
         while (resultSet.next()) {
