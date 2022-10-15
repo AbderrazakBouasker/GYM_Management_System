@@ -337,25 +337,28 @@ public class mainscreencontroller implements Initializable {
 
     //members list func
 
-    public void switchlist(ActionEvent event){
+    public void switchlist(ActionEvent event) throws SQLException {
         dashboardpanel.setVisible(false);
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(true);
-
+        Mainscreendao mainscreendao=new Mainscreendao();
+        mainscreendao.getinfo();
         ObservableList<listtableimp> observ = FXCollections.observableArrayList();
-        try{
-            Connection connection = DriverManager.getConnection(url,user,password);
-            Statement statement =connection.createStatement();
-            ResultSet resultSet=statement.executeQuery("select * from members");
-            while (resultSet.next()) {
-                observ.add(new listtableimp(resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
-                        , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
-            }
+        observ.add(new listtableimp(mainscreendao.getIdnumber().toString(),mainscreendao.getName(),mainscreendao.getLastname(),mainscreendao.getCompany(),mainscreendao.getReduction(),mainscreendao.getStartdate(),mainscreendao.getEnddate()));
 
-        }
-        catch (SQLException e){
-            Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
-        }
+        //try{
+            //Connection connection = DriverManager.getConnection(url,user,password);
+            //Statement statement =connection.createStatement();
+            //ResultSet resultSet=statement.executeQuery("select * from members");
+            //while (resultSet.next()) {
+                //observ.add(new listtableimp(resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
+                //        , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
+            //}
+
+        //}
+        //catch (SQLException e){
+         //   Logger.getLogger(mainscreencontroller.class.getName()).log(Level.SEVERE,null,e);
+        //}
 
 
         listtableviewidnumber.setCellValueFactory(new PropertyValueFactory<>("listidnumber"));

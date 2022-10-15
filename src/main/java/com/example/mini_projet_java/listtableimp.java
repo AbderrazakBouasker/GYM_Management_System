@@ -1,5 +1,7 @@
 package com.example.mini_projet_java;
 
+import java.sql.Array;
+
 public class listtableimp {
 
     private String listidnumber;
