@@ -9,6 +9,9 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Year;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Mainscreendao {
@@ -62,6 +65,47 @@ public class Mainscreendao {
 
         }
         return membersnumber;
+    }
+
+    public String avgincome() throws SQLException, ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        int income=0;
+        int comparemonth=0;
+        int compareday=0;
+        int compareyear=0;
+        LocalDate datelocalDate=LocalDate.now();
+        LocalDate dateenddate;
+        String enddate;
+        String query="select * from members";
+        ResultSet resultSet= statement.executeQuery(query);
+        while (resultSet.next()){
+            enddate=resultSet.getString("enddate");
+            dateenddate= LocalDate.parse(enddate);
+            compareyear=Year.of(dateenddate.getYear()).compareTo(Year.of(datelocalDate.getYear()));
+            comparemonth=dateenddate.getMonth().compareTo(datelocalDate.getMonth());
+            if(dateenddate.getDayOfMonth()>=datelocalDate.getDayOfMonth()){
+                compareday=1;
+            }
+            else {
+                compareday=-1;
+            }
+            if(compareyear>0){
+                income+=60;
+            } else if (compareyear==0) {
+                if (comparemonth>0){
+                    income+=60;
+                }
+                else if (comparemonth==0){
+                    if (compareday>0){
+                        income+=60;
+                    }
+                }
+            }
+
+        }
+
+
+        return String.valueOf(income);
     }
 
 

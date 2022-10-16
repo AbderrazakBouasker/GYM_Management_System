@@ -58,6 +58,10 @@ public class mainscreencontroller implements Initializable {
     private Pane dashboardpanel;
     @FXML
     private Pane addmemberpane;
+    @FXML
+    private TextField costinp;
+    @FXML
+    private TextField expdaysinp;
     //addmember dec
 
     @FXML
@@ -131,6 +135,7 @@ public class mainscreencontroller implements Initializable {
 
     public void initialize(URL ur, ResourceBundle resourceBundle) {
         try {
+            dashboardrevenuelabel.setText(mainscreendao.avgincome()+"Dt");
             dashboardmemberslabel.setText(mainscreendao.getmemcount());
             ObservableList<dashtableimp> obser = null;
             obser = mainscreendao.dashtablefill();
@@ -151,6 +156,7 @@ public class mainscreencontroller implements Initializable {
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(false);
         dashboardpanel.setVisible(true);
+        dashboardrevenuelabel.setText(mainscreendao.avgincome()+"Dt");
         dashboardmemberslabel.setText(mainscreendao.getmemcount());
         ObservableList<dashtableimp> obser =mainscreendao.dashtablefill();
         dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
