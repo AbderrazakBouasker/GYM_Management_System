@@ -1,6 +1,7 @@
 package com.example.mini_projet_java;
 
 import dao.Mainscreendao;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -213,4 +214,16 @@ public class mainscreencontroller implements Initializable {
         listtableviewselect.setCellValueFactory(new PropertyValueFactory<>("listselect"));
         listtableview.setItems(observ);
     }
+
+
+    public void delete(ActionEvent event){
+        for (listtableimp tb : listtableview.getItems()){
+            if(tb.getListselect().isSelected()){
+                Platform.runLater(()->{
+                    listtableview.getItems().remove(tb);
+                });
+            }
+        }
+    }
+
 }

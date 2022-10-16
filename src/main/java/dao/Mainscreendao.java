@@ -127,4 +127,10 @@ public class Mainscreendao {
         return observ;
     }
 
+    public void deletemem(){
+
+
+
+    }
+
 }
