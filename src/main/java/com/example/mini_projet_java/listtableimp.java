@@ -1,5 +1,7 @@
 package com.example.mini_projet_java;
 
+import javafx.scene.control.CheckBox;
+
 import java.sql.Array;
 
 public class listtableimp {
@@ -11,6 +13,7 @@ public class listtableimp {
     private String listpricereduction;
     private String liststartdate;
     private String listenddate;
+    private CheckBox listselect;
 
 
     public listtableimp(String listidnumber, String listname, String listlastname, String listcompanyname, String listpricereduction, String liststartdate, String listenddate) {
@@ -21,6 +24,7 @@ public class listtableimp {
         this.listpricereduction = listpricereduction;
         this.liststartdate = liststartdate;
         this.listenddate = listenddate;
+        this.listselect = new CheckBox();
     }
 
 
@@ -51,4 +55,6 @@ public class listtableimp {
     public String getListenddate() {
         return listenddate;
     }
+
+    public CheckBox getListselect() {return listselect;}
 }

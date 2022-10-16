@@ -120,7 +120,7 @@ public class mainscreencontroller implements Initializable {
     private TableColumn<listtableimp, String> listtableviewreduction;
 
     @FXML
-    private TableColumn<listtableimp, ?> listtableviewselect;
+    private TableColumn<listtableimp, CheckBox> listtableviewselect;
 
     @FXML
     private TableColumn<listtableimp, String> listtableviewstartdate;
@@ -210,6 +210,7 @@ public class mainscreencontroller implements Initializable {
         listtableviewreduction.setCellValueFactory(new PropertyValueFactory<>("listpricereduction"));
         listtableviewstartdate.setCellValueFactory(new PropertyValueFactory<>("liststartdate"));
         listtableviewenddate.setCellValueFactory(new PropertyValueFactory<>("listenddate"));
+        listtableviewselect.setCellValueFactory(new PropertyValueFactory<>("listselect"));
         listtableview.setItems(observ);
     }
 }
