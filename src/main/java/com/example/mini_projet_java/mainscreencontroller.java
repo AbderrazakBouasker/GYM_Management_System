@@ -165,24 +165,7 @@ public class mainscreencontroller implements Initializable {
         dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
         dashboardexpirationtable.setItems(obser);
-        //add cell of button
-        Callback<TableColumn<listtableimp,String >,TableCell<listtableimp,String>> cellFactory=(TableColumn<listtableimp,String> param)->{
-            //make cell caintaining buttons
-            final TableCell<listtableimp,String> cell=new TableCell<listtableimp,String >(){
-                @Override
-                public void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
-                    //that cell created only on non-empty rows
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
 
-                    } else{
-
-                    }
-                }
-            }
-        }
 
     }
     //addmember func

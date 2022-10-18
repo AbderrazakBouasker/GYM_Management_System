@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -154,5 +155,6 @@
             <Button layoutX="890.0" layoutY="246.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
          </children>
       </Pane>
+      <FontAwesomeIconView fx:id="star" glyphName="STAR" layoutX="850.0" layoutY="48.0" />
    </children>
 </AnchorPane>
