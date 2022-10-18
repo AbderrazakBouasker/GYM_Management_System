@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -121,7 +122,7 @@ public class mainscreencontroller implements Initializable {
     private TableColumn<listtableimp, String> listtableviewreduction;
 
     @FXML
-    private TableColumn<listtableimp, CheckBox> listtableviewselect;
+    private TableColumn<listtableimp, String> listtableviewselect;
 
     @FXML
     private TableColumn<listtableimp, String> listtableviewstartdate;
@@ -164,6 +165,25 @@ public class mainscreencontroller implements Initializable {
         dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
         dashboardexpirationtable.setItems(obser);
+        //add cell of button
+        Callback<TableColumn<listtableimp,String >,TableCell<listtableimp,String>> cellFactory=(TableColumn<listtableimp,String> param)->{
+            //make cell caintaining buttons
+            final TableCell<listtableimp,String> cell=new TableCell<listtableimp,String >(){
+                @Override
+                public void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    //that cell created only on non-empty rows
+                    if (empty) {
+                        setGraphic(null);
+                        setText(null);
+
+                    } else{
+
+                    }
+                }
+            }
+        }
+
     }
     //addmember func
 

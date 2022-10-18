@@ -24,7 +24,7 @@ public class listtableimp {
         this.listpricereduction = listpricereduction;
         this.liststartdate = liststartdate;
         this.listenddate = listenddate;
-        this.listselect = new CheckBox();
+        //this.listselect = new CheckBox();
     }
 
 
