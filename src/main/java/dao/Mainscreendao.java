@@ -120,7 +120,7 @@ public class Mainscreendao {
         ResultSet resultSet=statement.executeQuery("select * from members");
         ObservableList<listtableimp> observ = FXCollections.observableArrayList();
         while (resultSet.next()){
-            observ.add(new listtableimp(resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
+            observ.add(new listtableimp(resultSet.getString("id"),resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
                             , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
 
         }

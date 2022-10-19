@@ -223,6 +223,7 @@ public class mainscreencontroller implements Initializable {
         for (listtableimp tb : listtableview.getItems()){
             if(tb.getListselect().isSelected()){
                 Platform.runLater(()->{
+
                     listtableview.getItems().remove(tb);
                 });
             }

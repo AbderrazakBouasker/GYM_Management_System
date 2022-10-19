@@ -6,6 +6,7 @@ import java.sql.Array;
 
 public class listtableimp {
 
+    private String listid;
     private String listidnumber;
     private String listname;
     private String listlastname;
@@ -16,7 +17,8 @@ public class listtableimp {
     private CheckBox listselect;
 
 
-    public listtableimp(String listidnumber, String listname, String listlastname, String listcompanyname, String listpricereduction, String liststartdate, String listenddate) {
+    public listtableimp(String listid,String listidnumber, String listname, String listlastname, String listcompanyname, String listpricereduction, String liststartdate, String listenddate) {
+        this.listid = listid;
         this.listidnumber = listidnumber;
         this.listname = listname;
         this.listlastname = listlastname;
@@ -24,7 +26,7 @@ public class listtableimp {
         this.listpricereduction = listpricereduction;
         this.liststartdate = liststartdate;
         this.listenddate = listenddate;
-        //this.listselect = new CheckBox();
+        this.listselect = new CheckBox();
     }
 
 
@@ -57,4 +59,6 @@ public class listtableimp {
     }
 
     public CheckBox getListselect() {return listselect;}
+
+    public String getListid() {return listid;}
 }

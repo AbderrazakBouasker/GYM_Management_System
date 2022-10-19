@@ -24,7 +24,7 @@
          </font>
       </Text>
       <Accordion layoutX="181.0" layoutY="88.0" />
-      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
+      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;">
          <children>
             <Text layoutX="35.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average monthly revenue">
                <font>
@@ -136,7 +136,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;">
+      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
          <children>
             <TableView fx:id="listtableview" layoutX="6.0" layoutY="6.0" prefHeight="452.0" prefWidth="869.0">
               <columns>
