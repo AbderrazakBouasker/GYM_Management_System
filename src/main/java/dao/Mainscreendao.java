@@ -127,10 +127,9 @@ public class Mainscreendao {
         return observ;
     }
 
-    public void deletemem(){
-
-
-
+    public void deletemem(String id) throws SQLException {
+        String query="delete from members where id="+ id ;
+        statement.execute(query);
     }
 
 }

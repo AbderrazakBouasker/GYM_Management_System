@@ -127,6 +127,9 @@ public class mainscreencontroller implements Initializable {
     @FXML
     private TableColumn<listtableimp, String> listtableviewstartdate;
 
+    //delete verification
+
+
     private Parent root;
     Mainscreendao mainscreendao=new Mainscreendao();
     Scenechange scenechange=new Scenechange();
@@ -218,13 +221,26 @@ public class mainscreencontroller implements Initializable {
         listtableview.setItems(observ);
     }
 
+    public listtableimp getlistitems(){
+        listtableimp tb;
+        listtableview.getItems();
+    }
 
-    public void delete(ActionEvent event){
+
+    public void delete(ActionEvent event) throws SQLException{
         for (listtableimp tb : listtableview.getItems()){
             if(tb.getListselect().isSelected()){
                 Platform.runLater(()->{
-
-                    listtableview.getItems().remove(tb);
+                    try {
+                        Stage popups = new Stage();
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("verifdel.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        popups.setScene(scene);
+                        popups.show();
+                    }
+                    catch (IOException e){
+                        throw new RuntimeException(e);
+                    }
                 });
             }
         }
