@@ -221,10 +221,11 @@ public class mainscreencontroller implements Initializable {
         listtableview.setItems(observ);
     }
 
-    public listtableimp getlistitems(){
-        listtableimp tb;
+    /*public listtableimp getlistitems(){
+        listtableimp tb : listtableview.getItems();
         listtableview.getItems();
-    }
+        return tb;
+    }*/
 
 
     public void delete(ActionEvent event) throws SQLException{

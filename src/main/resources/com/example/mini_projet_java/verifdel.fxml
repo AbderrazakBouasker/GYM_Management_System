@@ -19,7 +19,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button fx:id="delvernobut" layoutX="236.0" layoutY="99.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="83.0" text="No">
+      <Button fx:id="delvernobut" layoutX="236.0" layoutY="99.0" mnemonicParsing="false" onAction="#delmemno" prefHeight="42.0" prefWidth="83.0" text="No">
          <font>
             <Font size="19.0" />
          </font>
