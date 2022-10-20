@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,12 +14,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -221,14 +220,39 @@ public class mainscreencontroller implements Initializable {
         listtableview.setItems(observ);
     }
 
-    /*public listtableimp getlistitems(){
-        listtableimp tb : listtableview.getItems();
-        listtableview.getItems();
-        return tb;
-    }*/
+    public void delete(){
+        for (listtableimp tb : listtableview.getItems()){
+            if(!tb.getListselect().isSelected()){}
+            else if (tb.getListselect().isSelected()){
+                Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Delete prompt");
+                alert.setHeaderText("Delete confirmation");
+                alert.setContentText("Are you sure you want to delete?");
+                Optional<ButtonType> result=alert.showAndWait();
+                for (listtableimp tb1 : listtableview.getItems()){
+                    if(tb1.getListselect().isSelected()){
+                        if(result.isPresent()&&result.get()==ButtonType.OK){
+                            Platform.runLater(()->{
+                                String locid=tb1.getListid();
+                                try {
+                                    mainscreendao.deletemem(locid);
+                                } catch (SQLException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                listtableview.getItems().remove(tb1);
+                            });
+                        }else {
+                            alert.close();
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 
 
-    public void delete(ActionEvent event) throws SQLException{
+    /*public void delete(ActionEvent event) throws SQLException{
         for (listtableimp tb : listtableview.getItems()){
             if(tb.getListselect().isSelected()){
                 Platform.runLater(()->{
@@ -245,6 +269,6 @@ public class mainscreencontroller implements Initializable {
                 });
             }
         }
-    }
+    }*/
 
 }
