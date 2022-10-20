@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class editmembercontroller implements Initializable {
@@ -39,19 +40,26 @@ public class editmembercontroller implements Initializable {
     @FXML
     private DatePicker startdateinp;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idnuminp.setText("");
-        nameinp.setText("");
-        lastnameinp.setText("");
-        companyinp.setText("");
-        reductioninp.setText("");
-        //startdateinp;
-        //enddateinp;
+
     }
 
     public void editmem(ActionEvent event){
 
 
     }
+    public void setall(String idn,String name,String lastname,String company,String reduction,String start,String end){
+        idnuminp.setText(idn);
+        nameinp.setText(name);
+        lastnameinp.setText(lastname);
+        companyinp.setText(company);
+        reductioninp.setText(reduction);
+        LocalDate startdate=LocalDate.parse(start);
+        startdateinp.setValue(startdate);
+        LocalDate enddate=LocalDate.parse(end);
+        enddateinp.setValue(enddate);
+    }
+
 }

@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 import java.io.IOException;
 import java.net.URL;
@@ -222,7 +223,7 @@ public class mainscreencontroller implements Initializable {
         listtableview.setItems(observ);
     }
 
-    public void delete(){
+    public void delete(ActionEvent event){
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Delete prompt");
                 alert.setHeaderText("Delete confirmation");
@@ -248,14 +249,17 @@ public class mainscreencontroller implements Initializable {
 
     }
 
-    public void editmem(){
+    public void editmem(ActionEvent event){
         for (listtableimp tb : listtableview.getItems()){
-            if(!tb.getListselect().isSelected()){
+            if(tb.getListselect().isSelected()){
                 Platform.runLater(()->{
                     try {
+                        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("editmember.fxml"));
+                        root=fxmlLoader.load();
+                        editmembercontroller editmembercontroller1=fxmlLoader.getController();
+                        editmembercontroller1.setall(tb.getListidnumber(),tb.getListname(),tb.getListlastname(),tb.getListcompanyname(),tb.getListpricereduction(),tb.getListstartdate(),tb.getListenddate());
                         Stage popups = new Stage();
-                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editmember.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load());
+                        Scene scene = new Scene(root);
                         popups.setScene(scene);
                         popups.show();
                     }
