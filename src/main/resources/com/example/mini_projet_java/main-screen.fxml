@@ -24,7 +24,7 @@
          </font>
       </Text>
       <Accordion layoutX="181.0" layoutY="88.0" />
-      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;">
+      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
          <children>
             <Text layoutX="35.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average monthly revenue">
                <font>
@@ -136,7 +136,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
+      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;">
          <children>
             <TableView fx:id="listtableview" layoutX="6.0" layoutY="6.0" prefHeight="452.0" prefWidth="869.0">
               <columns>
@@ -150,8 +150,9 @@
                   <TableColumn fx:id="listtableviewselect" prefWidth="47.0" text="Select" />
               </columns>
             </TableView>
-            <Button layoutX="890.0" layoutY="156.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Edit" />
+            <Button layoutX="890.0" layoutY="156.0" mnemonicParsing="false" onAction="#editmem" prefHeight="25.0" prefWidth="50.0" text="Edit" />
             <Button layoutX="890.0" layoutY="246.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+            <Label fx:id="editlabel" alignment="TOP_LEFT" layoutX="879.0" layoutY="295.0" prefHeight="154.0" prefWidth="74.0" text="Label" />
          </children>
       </Pane>
    </children>

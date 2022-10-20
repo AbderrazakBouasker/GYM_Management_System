@@ -95,6 +95,8 @@ public class mainscreencontroller implements Initializable {
     @FXML
     private Label outlabel;
     //member list dec
+    @FXML
+    private Label editlabel;
 
     @FXML
     private Pane memberslistpanel;
@@ -221,34 +223,48 @@ public class mainscreencontroller implements Initializable {
     }
 
     public void delete(){
-        for (listtableimp tb : listtableview.getItems()){
-            if(!tb.getListselect().isSelected()){}
-            else if (tb.getListselect().isSelected()){
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Delete prompt");
                 alert.setHeaderText("Delete confirmation");
                 alert.setContentText("Are you sure you want to delete?");
                 Optional<ButtonType> result=alert.showAndWait();
-                for (listtableimp tb1 : listtableview.getItems()){
-                    if(tb1.getListselect().isSelected()){
+                for (listtableimp tb : listtableview.getItems()){
+                    if(tb.getListselect().isSelected()){
                         if(result.isPresent()&&result.get()==ButtonType.OK){
                             Platform.runLater(()->{
-                                String locid=tb1.getListid();
+                                String locid=tb.getListid();
                                 try {
                                     mainscreendao.deletemem(locid);
                                 } catch (SQLException e) {
                                     throw new RuntimeException(e);
                                 }
-                                listtableview.getItems().remove(tb1);
+                                listtableview.getItems().remove(tb);
                             });
                         }else {
                             alert.close();
                         }
                     }
-                }
-            }
         }
 
+    }
+
+    public void editmem(){
+        for (listtableimp tb : listtableview.getItems()){
+            if(!tb.getListselect().isSelected()){
+                Platform.runLater(()->{
+                    try {
+                        Stage popups = new Stage();
+                        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editmember.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        popups.setScene(scene);
+                        popups.show();
+                    }
+                    catch (IOException e){
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
     }
 
 
