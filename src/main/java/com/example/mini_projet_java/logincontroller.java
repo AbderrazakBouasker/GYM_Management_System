@@ -16,7 +16,7 @@ public class logincontroller {
     private Button loginbutton;
 
     @FXML
-    private Button forgotbutton;
+    private Hyperlink forgotbutton;
 
     @FXML
     public TextField passwordinput;
@@ -44,6 +44,10 @@ public class logincontroller {
 
     @FXML
     private Button forgotsubmit;
+    @FXML
+    private TextField passwordinputtext;
+    @FXML
+    private CheckBox showpass;
     private Parent root;
 
 
@@ -87,5 +91,17 @@ public class logincontroller {
     public void gologinscene(ActionEvent event) throws IOException {
         root = FXMLLoader.load((getClass()).getResource("login-screen.fxml"));
         scenechange.changesceneto(root,event);
+    }
+    @FXML
+    void showpassfunc(ActionEvent event) {
+        if (showpass.isSelected()) {
+            passwordinputtext.setText(passwordinput.getText());
+            passwordinputtext.setVisible(true);
+            passwordinput.setVisible(false);
+            return;
+        }
+        passwordinput.setText(passwordinputtext.getText());
+        passwordinput.setVisible(true);
+        passwordinputtext.setVisible(false);
     }
 }
