@@ -132,4 +132,9 @@ public class Mainscreendao {
         statement.execute(query);
     }
 
+    public void editmeminfo(String id,String idnumber,String name,String lastname,String company,String paymentred,String startdate,String enddate) throws SQLException {
+        String query="UPDATE members SET id ="+id+ ", idnumber = "+idnumber+", name ='"+name+"' , lastname ='"+lastname+"', companyname ='"+company+"', paymentreduction =" +paymentred+", startdate ='"+startdate+"', enddate = '"+enddate+"' WHERE id =" +id;
+        statement.execute(query);
+    }
+
 }

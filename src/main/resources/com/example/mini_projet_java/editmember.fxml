@@ -53,14 +53,14 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="editbtn" layoutX="483.0" layoutY="340.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="87.0" text="Edit">
+      <Button fx:id="editbtn" layoutX="483.0" layoutY="340.0" mnemonicParsing="false" onAction="#editmem" prefHeight="37.0" prefWidth="87.0" text="Edit">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="editclosestage" alignment="CENTER" layoutX="546.0" layoutY="14.0" prefHeight="37.0" prefWidth="40.0" text="X" textFill="RED">
+      <Label fx:id="editconflabel" layoutX="337.0" layoutY="342.0" prefHeight="37.0" prefWidth="124.0">
          <font>
-            <Font size="20.0" />
+            <Font size="13.0" />
          </font>
       </Label>
    </children>

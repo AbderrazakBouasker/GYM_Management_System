@@ -257,7 +257,7 @@ public class mainscreencontroller implements Initializable {
                         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("editmember.fxml"));
                         root=fxmlLoader.load();
                         editmembercontroller editmembercontroller1=fxmlLoader.getController();
-                        editmembercontroller1.setall(tb.getListidnumber(),tb.getListname(),tb.getListlastname(),tb.getListcompanyname(),tb.getListpricereduction(),tb.getListstartdate(),tb.getListenddate());
+                        editmembercontroller1.setall(tb.getListid(),tb.getListidnumber(),tb.getListname(),tb.getListlastname(),tb.getListcompanyname(),tb.getListpricereduction(),tb.getListstartdate(),tb.getListenddate());
                         Stage popups = new Stage();
                         Scene scene = new Scene(root);
                         popups.setScene(scene);
