@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.scene.Node;
 
 import java.io.IOException;
 import java.net.URL;
@@ -129,6 +128,7 @@ public class mainscreencontroller implements Initializable {
     @FXML
     private TableColumn<listtableimp, String> listtableviewstartdate;
 
+    boolean selection=false;
     //delete verification
 
 
@@ -150,9 +150,11 @@ public class mainscreencontroller implements Initializable {
             dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
             dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
             dashboardexpirationtable.setItems(obser);
+
         } catch (SQLException | ParseException e) {
             throw new RuntimeException(e);
         }
+
     }
     public void logout(ActionEvent event) throws IOException {
         root = FXMLLoader.load((getClass()).getResource("login-screen.fxml"));
@@ -223,11 +225,25 @@ public class mainscreencontroller implements Initializable {
         listtableview.setItems(observ);
     }
 
+    public boolean vercheckbox(){
+        boolean locbool=true;
+        for(listtableimp tb : listtableview.getItems()){
+            if(tb.getListselect().isSelected()){
+                locbool=true;
+            }
+            else {
+                locbool=false;
+            }
+        }
+        return locbool;
+    }
+
     public void delete(ActionEvent event){
                 Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Delete prompt");
                 alert.setHeaderText("Delete confirmation");
                 alert.setContentText("Are you sure you want to delete?");
+                if(vercheckbox()){
                 Optional<ButtonType> result=alert.showAndWait();
                 for (listtableimp tb : listtableview.getItems()){
                     if(tb.getListselect().isSelected()){
@@ -245,7 +261,8 @@ public class mainscreencontroller implements Initializable {
                             alert.close();
                         }
                     }
-        }
+                }}
+
 
     }
 
