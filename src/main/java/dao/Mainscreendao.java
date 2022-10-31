@@ -83,12 +83,16 @@ public class Mainscreendao {
             dateenddate= LocalDate.parse(enddate);
             compareyear=Year.of(dateenddate.getYear()).compareTo(Year.of(datelocalDate.getYear()));
             comparemonth=dateenddate.getMonth().compareTo(datelocalDate.getMonth());
+
+
             if(dateenddate.getDayOfMonth()>=datelocalDate.getDayOfMonth()){
                 compareday=1;
             }
             else {
                 compareday=-1;
             }
+
+
             if(compareyear>0){
                 income+=60;
             } else if (compareyear==0) {

@@ -30,6 +30,9 @@ public class creatusercontroller {
     private PasswordField creatuserpassword;
 
     @FXML
+    private PasswordField creatuserpassword1;
+
+    @FXML
     private TextField creatusersong;
     @FXML
     private Button creatlogin;
@@ -50,10 +53,11 @@ public class creatusercontroller {
     @FXML
     void adduser(ActionEvent event) throws SQLException {
 
-        if(creatusername.getText().isEmpty()||creatuserpassword.getText().isEmpty()||creatusermovie.getText().isEmpty()||creatusersong.getText().isEmpty()){
+        if(creatusername.getText().isEmpty()||creatuserpassword.getText().isEmpty() ||creatuserpassword1.getText().isEmpty()||creatusermovie.getText().isEmpty()||creatusersong.getText().isEmpty()){
             creatlabel.setText("Fill all fields");
-        }
-        else {
+        } else if (creatuserpassword.getText()!=creatuserpassword1.getText()) {
+            creatlabel.setText("Password and confirm password should be the same");
+        } else {
             varname=creatusername.getText();
             varpass=creatuserpassword.getText();
             varq1=creatusermovie.getText();
