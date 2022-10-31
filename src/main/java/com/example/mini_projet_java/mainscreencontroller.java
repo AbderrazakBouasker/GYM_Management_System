@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -98,6 +100,8 @@ public class mainscreencontroller implements Initializable {
     @FXML
     private Label editlabel;
 
+    @FXML
+    private TextField searchfield;
     @FXML
     private Pane memberslistpanel;
 
@@ -223,6 +227,23 @@ public class mainscreencontroller implements Initializable {
         listtableviewenddate.setCellValueFactory(new PropertyValueFactory<>("listenddate"));
         listtableviewselect.setCellValueFactory(new PropertyValueFactory<>("listselect"));
         listtableview.setItems(observ);
+    }
+    @FXML
+    void search(KeyEvent event) throws SQLException {
+        if (searchfield.getText().isEmpty()){
+            switchlist(new ActionEvent());
+        }else {
+            ObservableList<listtableimp> observ = mainscreendao.getinfobyname(searchfield.getText());
+            listtableviewidnumber.setCellValueFactory(new PropertyValueFactory<>("listidnumber"));
+            listtableviewname.setCellValueFactory(new PropertyValueFactory<>("listname"));
+            listtableviewlasname.setCellValueFactory(new PropertyValueFactory<>("listlastname"));
+            listtableviewcompany.setCellValueFactory(new PropertyValueFactory<>("listcompanyname"));
+            listtableviewreduction.setCellValueFactory(new PropertyValueFactory<>("listpricereduction"));
+            listtableviewstartdate.setCellValueFactory(new PropertyValueFactory<>("liststartdate"));
+            listtableviewenddate.setCellValueFactory(new PropertyValueFactory<>("listenddate"));
+            listtableviewselect.setCellValueFactory(new PropertyValueFactory<>("listselect"));
+            listtableview.setItems(observ);
+        }
     }
 
     public boolean vercheckbox(){

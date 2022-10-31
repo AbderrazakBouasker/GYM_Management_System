@@ -130,6 +130,16 @@ public class Mainscreendao {
         }
         return observ;
     }
+    public ObservableList<listtableimp> getinfobyname(String name) throws SQLException {
+        ResultSet resultSet=statement.executeQuery("select * from members where name like '"+name+ ""+"%"+"'");
+        ObservableList<listtableimp> observ = FXCollections.observableArrayList();
+        while (resultSet.next()){
+            observ.add(new listtableimp(resultSet.getString("id"),resultSet.getString("idnumber"), resultSet.getString("name"),resultSet.getString("lastname")
+                    , resultSet.getString("companyname"), resultSet.getString("paymentreduction"), resultSet.getString("startdate"), resultSet.getString("enddate")));
+
+        }
+        return observ;
+    }
 
     public void deletemem(String id) throws SQLException {
         String query="delete from members where id="+ id ;
