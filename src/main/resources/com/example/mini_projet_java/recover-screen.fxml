@@ -7,43 +7,42 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.logincontroller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="430.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.logincontroller">
    <children>
-      <Text fontSmoothingType="LCD" layoutX="87.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer the questions" textAlignment="CENTER">
+      <Text fill="WHITESMOKE" fontSmoothingType="LCD" layoutX="87.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer the questions" textAlignment="CENTER">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <TextField fx:id="forgotusername" layoutX="194.0" layoutY="112.0" />
-      <TextField fx:id="forgotmovie" layoutX="194.0" layoutY="174.0" />
-      <TextField fx:id="forgotsong" layoutX="194.0" layoutY="244.0" />
-      <Label fx:id="forgotpassword" layoutX="194.0" layoutY="319.0" prefHeight="32.0" prefWidth="222.0">
+      <TextField fx:id="forgotusername" layoutX="194.0" layoutY="112.0" promptText="User name" />
+      <TextField fx:id="forgotmovie" layoutX="194.0" layoutY="174.0" promptText="Movie name" />
+      <TextField fx:id="forgotsong" layoutX="194.0" layoutY="244.0" promptText="Song name" />
+      <Label fx:id="forgotpassword" layoutX="192.0" layoutY="318.0" prefHeight="32.0" prefWidth="222.0" textFill="WHITESMOKE">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Text layoutX="34.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your username">
+      <Text fill="WHITESMOKE" layoutX="34.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your username">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="34.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your favorite movie">
+      <Text fill="WHITESMOKE" layoutX="34.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your favorite movie">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="34.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your favorite song">
+      <Text fill="WHITESMOKE" layoutX="34.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your favorite song">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="34.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your password">
+      <Text fill="WHITESMOKE" layoutX="34.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your password">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Button fx:id="forgotback" layoutX="99.0" layoutY="361.0" mnemonicParsing="false" onAction="#gologinscene" prefHeight="32.0" prefWidth="68.0" text="Go back" />
       <Button fx:id="forgotsubmit" layoutX="269.0" layoutY="361.0" mnemonicParsing="false" onAction="#recoverinfo" prefHeight="32.0" prefWidth="68.0" text="Submit" />
+      <Button fx:id="forgotback" layoutX="99.0" layoutY="361.0" mnemonicParsing="false" onAction="#gologinscene" prefHeight="32.0" prefWidth="68.0" text="Go back" />
    </children>
 </AnchorPane>

@@ -3,8 +3,11 @@ package com.example.mini_projet_java;
 import dao.Logindao;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -15,11 +18,17 @@ import java.util.TimerTask;
 
 
 public class mainapp extends Application {
+    @FXML
+    private ProgressBar progressbar;
+    @FXML
+    private Label loadingmessage;
 
+    @FXML
+    private Label loadingvalue;
     Stage s;
 
     @Override
-    public void start(Stage stage) throws IOException, SQLException {
+    public void start(Stage stage) throws IOException, SQLException, InterruptedException {
         FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("loading-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.initStyle(StageStyle.UNDECORATED);
@@ -29,6 +38,44 @@ public class mainapp extends Application {
         stage.show();
 
         Logindao logindao =new Logindao();
+        /*mainapp ma=new mainapp();
+
+        for (int i = 0; i < 100; i++) {
+            Thread.sleep(200);
+            ma.loadingvalue.setText(i+"%");
+            if (i==20){
+                ma.loadingmessage.setText("Turning modules on...");
+            }
+            if (i==40){
+                ma.loadingmessage.setText("Loading modules...");
+            }
+            if (i==60){
+                ma.loadingmessage.setText("Connecting to Database...");
+            }
+            if (i==80){
+                ma.loadingmessage.setText("Launching...");
+            }
+            ma.progressbar.setProgress(i);
+        }*/
+        /*if (logindao.dbcheckexist()){
+            s=new Stage();
+            fxmlLoader = new FXMLLoader(mainapp.class.getResource("creatuser-screen.fxml"));
+            scene = new Scene(fxmlLoader.load());
+            s.setTitle("gym manager");
+            s.setResizable(false);
+            s.setScene(scene);
+            s.show();
+            stage.hide();
+        }else {
+            s=new Stage();
+            fxmlLoader = new FXMLLoader(mainapp.class.getResource("login-screen.fxml"));
+            scene = new Scene(fxmlLoader.load());
+            s.setTitle("gym manager");
+            s.setResizable(false);
+            s.setScene(scene);
+            s.show();
+            stage.hide();
+        }*/
 
         Timer timer = new Timer();
         TimerTask task=new TimerTask() {
@@ -44,6 +91,8 @@ public class mainapp extends Application {
                                     s=new Stage();
                                     FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("creatuser-screen.fxml"));
                                     Scene scene = new Scene(fxmlLoader.load());
+                                    s.setTitle("gym manager");
+                                    s.setResizable(false);
                                     s.setScene(scene);
                                     s.show();
                                     stage.hide();
@@ -63,6 +112,8 @@ public class mainapp extends Application {
                                     s=new Stage();
                                     FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("login-screen.fxml"));
                                     Scene scene = new Scene(fxmlLoader.load());
+                                    s.setTitle("gym manager");
+                                    s.setResizable(false);
                                     s.setScene(scene);
                                     s.show();
                                     stage.hide();

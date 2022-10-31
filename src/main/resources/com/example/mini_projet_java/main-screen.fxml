@@ -12,33 +12,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="556.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.mainscreencontroller">
+<AnchorPane prefHeight="556.0" prefWidth="1130.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.mainscreencontroller">
    <children>
       <Button fx:id="maindashboardbutton" layoutX="19.0" layoutY="68.0" mnemonicParsing="false" onAction="#refreshdashboard" prefHeight="41.0" prefWidth="90.0" text="Dashboard" />
       <Button fx:id="mainlistbutton" layoutX="19.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchlist" prefHeight="41.0" prefWidth="111.0" text="Members list" />
       <Button fx:id="mainaddbutton" layoutX="19.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchadd" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
       <Button fx:id="mainlogoutbutton" layoutX="19.0" layoutY="480.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="74.0" text="Logout" />
-      <Text layoutX="439.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
+      <Text fill="WHITESMOKE" layoutX="439.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
       <Accordion layoutX="181.0" layoutY="88.0" />
-      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
+      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;" visible="false">
          <children>
-            <Text layoutX="35.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average monthly revenue">
+            <Text fill="WHITESMOKE" layoutX="29.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average monthly revenue">
                <font>
-                  <Font size="15.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="72.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym members">
+            <Text fill="WHITESMOKE" layoutX="72.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym members">
                <font>
-                  <Font size="15.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="322.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nearly expired subscription">
+            <Text fill="WHITESMOKE" layoutX="322.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nearly expired subscription">
                <font>
-                  <Font size="15.0" />
+                  <Font size="16.0" />
                </font>
             </Text>
             <TableView fx:id="dashboardexpirationtable" layoutX="215.0" layoutY="57.0" prefHeight="397.0" prefWidth="394.0">
@@ -51,12 +51,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="dashboardmemberslabel" alignment="CENTER" layoutX="78.0" layoutY="112.0" prefHeight="30.0" prefWidth="84.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="dashboardmemberslabel" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="112.0" prefHeight="30.0" prefWidth="84.0" textAlignment="CENTER" textFill="WHITESMOKE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="dashboardrevenuelabel" layoutX="83.0" layoutY="327.0" prefHeight="30.0" prefWidth="74.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="dashboardrevenuelabel" alignment="CENTER" contentDisplay="CENTER" layoutX="83.0" layoutY="327.0" prefHeight="30.0" prefWidth="74.0" textAlignment="CENTER" textFill="WHITESMOKE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -75,46 +75,46 @@
             <TextField fx:id="costinp" layoutX="695.0" layoutY="329.0" prefHeight="25.0" prefWidth="171.0" visible="false" />
          </children>
       </Pane>
-      <Pane fx:id="addmemberpane" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;" visible="false">
+      <Pane fx:id="addmemberpane" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;">
          <children>
-            <Text layoutX="168.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+            <Text fill="WHITESMOKE" layoutX="168.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="nameinput" layoutX="269.0" layoutY="55.0" />
-            <TextField fx:id="idnumberinput" layoutX="269.0" layoutY="121.0" />
-            <Text layoutX="161.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id number">
+            <TextField fx:id="nameinput" layoutX="269.0" layoutY="65.0" promptText="Name" />
+            <TextField fx:id="lastnameinput" layoutX="595.0" layoutY="66.0" promptText="Last name" />
+            <TextField fx:id="idnumberinput" layoutX="269.0" layoutY="131.0" promptText="Id number" />
+            <Text fill="WHITESMOKE" layoutX="161.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id number">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="164.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date">
+            <Text fill="WHITESMOKE" layoutX="164.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <DatePicker fx:id="startdateinput" layoutX="269.0" layoutY="313.0" />
-            <TextField fx:id="lastnameinput" layoutX="595.0" layoutY="56.0" />
-            <TextField fx:id="companyinput" layoutX="595.0" layoutY="121.0" promptText="optional" />
+            <TextField fx:id="companyinput" layoutX="595.0" layoutY="131.0" promptText="optional" />
             <TextField fx:id="reductioninput" layoutX="442.0" layoutY="218.0" promptText="optional" />
-            <Text layoutX="488.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname">
+            <DatePicker fx:id="startdateinput" layoutX="269.0" layoutY="309.0" promptText="Start date" />
+            <DatePicker fx:id="enddateinput" layoutX="572.0" layoutY="309.0" promptText="End date" />
+            <Text fill="WHITESMOKE" layoutX="488.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lastname">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="442.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company name">
+            <Text fill="WHITESMOKE" layoutX="442.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company name">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="277.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price reduction">
+            <Text fill="WHITESMOKE" layoutX="277.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price reduction">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <DatePicker fx:id="enddateinput" layoutX="572.0" layoutY="313.0" />
-            <Text layoutX="472.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date">
+            <Text fill="WHITESMOKE" layoutX="472.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date">
                <font>
                   <Font size="20.0" />
                </font>
@@ -124,19 +124,19 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Text layoutX="263.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add member" textAlignment="CENTER" wrappingWidth="384.13671875">
+            <Text fill="WHITESMOKE" layoutX="256.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add member" textAlignment="CENTER" wrappingWidth="384.13671875">
                <font>
-                  <Font size="20.0" />
+                  <Font size="23.0" />
                </font>
             </Text>
-            <Label fx:id="outlabel" layoutX="338.0" layoutY="349.0" prefHeight="30.0" prefWidth="210.0" textAlignment="CENTER" textFill="RED">
+            <Label fx:id="outlabel" layoutX="338.0" layoutY="349.0" prefHeight="30.0" prefWidth="210.0" textAlignment="CENTER" textFill="WHITESMOKE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #d1d0cd;">
+      <Pane fx:id="memberslistpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;" visible="false">
          <children>
             <TableView fx:id="listtableview" layoutX="6.0" layoutY="43.0" prefHeight="415.0" prefWidth="869.0">
               <columns>
@@ -152,7 +152,7 @@
             </TableView>
             <Button layoutX="890.0" layoutY="156.0" mnemonicParsing="false" onAction="#editmem" prefHeight="25.0" prefWidth="50.0" text="Edit" />
             <Button layoutX="890.0" layoutY="246.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
-            <Label layoutX="602.0" layoutY="18.0" text="Search by name">
+            <Label layoutX="602.0" layoutY="18.0" text="Search by name" textFill="WHITESMOKE">
                <font>
                   <Font size="15.0" />
                </font>
