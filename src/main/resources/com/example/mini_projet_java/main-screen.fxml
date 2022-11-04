@@ -24,7 +24,7 @@
          </font>
       </Text>
       <Accordion layoutX="181.0" layoutY="88.0" />
-      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;" visible="false">
+      <Pane fx:id="dashboardpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;">
          <children>
             <Text fill="WHITESMOKE" layoutX="29.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average monthly revenue">
                <font>
@@ -61,21 +61,21 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Text layoutX="695.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly subscribtion cost" textAlignment="CENTER" visible="false">
+            <Text fill="WHITESMOKE" layoutX="695.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly subscribtion cost" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="712.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Days until expiration" visible="false">
+            <Text fill="WHITESMOKE" layoutX="712.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Days until expiration">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="expdaysinp" layoutX="695.0" layoutY="127.0" prefHeight="25.0" prefWidth="171.0" visible="false" />
-            <TextField fx:id="costinp" layoutX="695.0" layoutY="329.0" prefHeight="25.0" prefWidth="171.0" visible="false" />
+            <TextField fx:id="expdaysinp" layoutX="695.0" layoutY="127.0" onKeyPressed="#updatedashbydays" prefHeight="25.0" prefWidth="171.0" text="3" />
+            <TextField fx:id="costinp" layoutX="695.0" layoutY="329.0" onKeyPressed="#revenuebyinp" prefHeight="25.0" prefWidth="171.0" text="60" />
          </children>
       </Pane>
-      <Pane fx:id="addmemberpane" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;">
+      <Pane fx:id="addmemberpane" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;" visible="false">
          <children>
             <Text fill="WHITESMOKE" layoutX="168.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                <font>

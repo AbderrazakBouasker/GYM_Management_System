@@ -4,6 +4,7 @@ import dao.Mainscreendao;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -146,10 +147,10 @@ public class mainscreencontroller implements Initializable {
 
     public void initialize(URL ur, ResourceBundle resourceBundle) {
         try {
-            dashboardrevenuelabel.setText(mainscreendao.avgincome()+"Dt");
+            dashboardrevenuelabel.setText(mainscreendao.avgincome(costinp.getText())+"Dt");
             dashboardmemberslabel.setText(mainscreendao.getmemcount());
             ObservableList<dashtableimp> obser = null;
-            obser = mainscreendao.dashtablefill();
+            obser = mainscreendao.dashtablefill(Integer.parseInt(expdaysinp.getText()));
             dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
             dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
             dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
@@ -169,9 +170,9 @@ public class mainscreencontroller implements Initializable {
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(false);
         dashboardpanel.setVisible(true);
-        dashboardrevenuelabel.setText(mainscreendao.avgincome()+"Dt");
+        dashboardrevenuelabel.setText(mainscreendao.avgincome(costinp.getText())+"Dt");
         dashboardmemberslabel.setText(mainscreendao.getmemcount());
-        ObservableList<dashtableimp> obser =mainscreendao.dashtablefill();
+        ObservableList<dashtableimp> obser =mainscreendao.dashtablefill(Integer.parseInt(expdaysinp.getText()));
         dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
         dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
@@ -179,6 +180,32 @@ public class mainscreencontroller implements Initializable {
 
 
     }
+    @FXML
+    void updatedashbydays(KeyEvent event) throws SQLException, ParseException {
+        if (expdaysinp.getText().isEmpty()){
+            ObservableList<dashtableimp> obser =mainscreendao.dashtablefill(0);
+            dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
+            dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+            dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
+            dashboardexpirationtable.setItems(obser);
+        }else {
+            ObservableList<dashtableimp> obser = mainscreendao.dashtablefill(Integer.parseInt(expdaysinp.getText()));
+            dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
+            dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+            dashboardlistdays.setCellValueFactory(new PropertyValueFactory<>("remaindays"));
+            dashboardexpirationtable.setItems(obser);
+        }
+    }
+
+    @FXML
+    void revenuebyinp(KeyEvent event) throws SQLException, ParseException {
+        if (costinp.getText().isEmpty()){
+            dashboardrevenuelabel.setText(mainscreendao.avgincome("60")+"Dt");
+        }else {
+            dashboardrevenuelabel.setText(mainscreendao.avgincome(costinp.getText()) + "Dt");
+        }
+    }
+
     //addmember func
 
     public void insert(ActionEvent event) throws SQLException {

@@ -38,26 +38,26 @@ public class mainapp extends Application {
         stage.show();
 
         Logindao logindao =new Logindao();
-        /*mainapp ma=new mainapp();
+        /*//mainapp ma=new mainapp();
 
         for (int i = 0; i < 100; i++) {
             Thread.sleep(200);
-            ma.loadingvalue.setText(i+"%");
+            loadingvalue.setText(i+"%");
             if (i==20){
-                ma.loadingmessage.setText("Turning modules on...");
+                loadingmessage.setText("Turning modules on...");
             }
             if (i==40){
-                ma.loadingmessage.setText("Loading modules...");
+                loadingmessage.setText("Loading modules...");
             }
             if (i==60){
-                ma.loadingmessage.setText("Connecting to Database...");
+                loadingmessage.setText("Connecting to Database...");
             }
             if (i==80){
-                ma.loadingmessage.setText("Launching...");
+                loadingmessage.setText("Launching...");
             }
-            ma.progressbar.setProgress(i);
-        }*/
-        /*if (logindao.dbcheckexist()){
+            progressbar.setProgress(i);
+        }
+        if (logindao.dbcheckexist()){
             s=new Stage();
             fxmlLoader = new FXMLLoader(mainapp.class.getResource("creatuser-screen.fxml"));
             scene = new Scene(fxmlLoader.load());

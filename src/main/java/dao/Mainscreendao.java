@@ -30,7 +30,7 @@ public class Mainscreendao {
 
     }
 
-    public ObservableList<dashtableimp> dashtablefill() throws SQLException, ParseException {
+    public ObservableList<dashtableimp> dashtablefill(int days) throws SQLException, ParseException {
         ObservableList<dashtableimp> obser = FXCollections.observableArrayList();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String query="select * from members";
@@ -48,7 +48,7 @@ public class Mainscreendao {
             Date d2 = sdf.parse(enddate);
             long difference_In_Time = d2.getTime() - d1.getTime();
             long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
-            if (difference_In_Days<=3){
+            if (difference_In_Days<=days){
                 obser.add(new dashtableimp(name,lastname,enddate));
             }
         }
@@ -67,8 +67,9 @@ public class Mainscreendao {
         return membersnumber;
     }
 
-    public String avgincome() throws SQLException, ParseException {
+    public String avgincome(String stcost) throws SQLException, ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        int cost=Integer.parseInt(stcost);
         int income=0;
         int comparemonth=0;
         int compareday=0;
@@ -94,14 +95,14 @@ public class Mainscreendao {
 
 
             if(compareyear>0){
-                income+=60;
+                income+=cost;
             } else if (compareyear==0) {
                 if (comparemonth>0){
-                    income+=60;
+                    income+=cost;
                 }
                 else if (comparemonth==0){
                     if (compareday>0){
-                        income+=60;
+                        income+=cost;
                     }
                 }
             }
