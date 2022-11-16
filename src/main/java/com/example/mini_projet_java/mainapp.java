@@ -34,6 +34,7 @@ public class mainapp extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("gym manager");
         stage.setResizable(false);
+        stage.centerOnScreen();
         stage.setScene(scene);
         stage.show();
         //Splashscreencontroller splashscreencontroller=new Splashscreencontroller();
@@ -95,6 +96,7 @@ public class mainapp extends Application {
                                     Scene scene = new Scene(fxmlLoader.load());
                                     s.setTitle("gym manager");
                                     s.setResizable(false);
+                                    s.centerOnScreen();
                                     s.setScene(scene);
                                     s.show();
                                     stage.hide();
@@ -115,6 +117,7 @@ public class mainapp extends Application {
                                     FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("login-screen.fxml"));
                                     Scene scene = new Scene(fxmlLoader.load());
                                     s.setTitle("gym manager");
+                                    s.centerOnScreen();
                                     s.setResizable(false);
                                     s.setScene(scene);
                                     s.show();
