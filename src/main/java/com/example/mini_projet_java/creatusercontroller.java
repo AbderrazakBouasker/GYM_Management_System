@@ -55,7 +55,7 @@ public class creatusercontroller {
 
         if(creatusername.getText().isEmpty()||creatuserpassword.getText().isEmpty() ||creatuserpassword1.getText().isEmpty()||creatusermovie.getText().isEmpty()||creatusersong.getText().isEmpty()){
             creatlabel.setText("Fill all fields");
-        } else if (creatuserpassword.getText()!=creatuserpassword1.getText()) {
+        } else if (!creatuserpassword.getText().equals(creatuserpassword1.getText())) {
             creatlabel.setText("Password and confirm password should be the same");
         } else {
             varname=creatusername.getText();
