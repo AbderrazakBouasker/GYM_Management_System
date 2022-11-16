@@ -28,7 +28,7 @@ public class mainapp extends Application {
     Stage s;
 
     @Override
-    public void start(Stage stage) throws IOException, SQLException, InterruptedException {
+    public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(mainapp.class.getResource("loading-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.initStyle(StageStyle.UNDECORATED);
@@ -36,12 +36,14 @@ public class mainapp extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-
+        //Splashscreencontroller splashscreencontroller=new Splashscreencontroller();
+        //splashscreencontroller.start(stage);
         Logindao logindao =new Logindao();
-        /*//mainapp ma=new mainapp();
+        //mainapp ma=new mainapp();
 
-        for (int i = 0; i < 100; i++) {
-            Thread.sleep(200);
+        /*for (int i = 0; i < 100; i++) {
+            Thread.sleep(20);
+            System.out.println(i);
             loadingvalue.setText(i+"%");
             if (i==20){
                 loadingmessage.setText("Turning modules on...");
@@ -56,8 +58,8 @@ public class mainapp extends Application {
                 loadingmessage.setText("Launching...");
             }
             progressbar.setProgress(i);
-        }
-        if (logindao.dbcheckexist()){
+        }*/
+        /*if (logindao.dbcheckexist()){
             s=new Stage();
             fxmlLoader = new FXMLLoader(mainapp.class.getResource("creatuser-screen.fxml"));
             scene = new Scene(fxmlLoader.load());
@@ -132,7 +134,7 @@ public class mainapp extends Application {
             }
         };
 
-        timer.schedule(task, 2000);
+        timer.schedule(task, 3000);
 
 
 
