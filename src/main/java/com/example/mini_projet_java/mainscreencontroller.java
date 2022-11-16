@@ -21,9 +21,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Date;
 
 
 public class mainscreencontroller implements Initializable {
@@ -208,7 +210,7 @@ public class mainscreencontroller implements Initializable {
 
     //addmember func
 
-    public void insert(ActionEvent event) throws SQLException {
+    public void insert(ActionEvent event) throws SQLException, ParseException {
         LocalDate startdate=startdateinput.getValue();
         LocalDate enddate=enddateinput.getValue();
         String varcompany=companyinput.getText();
@@ -216,19 +218,25 @@ public class mainscreencontroller implements Initializable {
         String varname=nameinput.getText();
         String varlastname=lastnameinput.getText();
         String varidnumber=idnumberinput.getText();
-
-        if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null){
+        if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null) {
             outlabel.setText("Fill all necessary fields");
-        } else{
-            String varstartdate=startdate.toString();
-            String varenddate=enddate.toString();
-            if(reductioninput.getText().isEmpty()){
-                varpayment=null;
+        }else {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date d1 = sdf.parse(String.valueOf(startdate));
+            Date d2 = sdf.parse(String.valueOf(enddate));
+            long diff = d2.getTime() - d1.getTime();
+            if (diff < 0) {
+                outlabel.setText("Start date should be earlier than end date");
+            } else {
+                String varstartdate = startdate.toString();
+                String varenddate = enddate.toString();
+                if (reductioninput.getText().isEmpty()) {
+                    varpayment = null;
+                }
+                mainscreendao.insertnew(varidnumber, varname, varlastname, varcompany, varpayment, varstartdate, varenddate);
+                outlabel.setText("Added successfully");
             }
-            mainscreendao.insertnew(varidnumber,varname,varlastname,varcompany,varpayment,varstartdate,varenddate);
-            outlabel.setText("");
         }
-
     }
 
     public void switchadd(ActionEvent event){

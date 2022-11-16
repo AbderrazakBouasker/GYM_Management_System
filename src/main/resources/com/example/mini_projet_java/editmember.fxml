@@ -15,8 +15,8 @@
       <TextField fx:id="lastnameinp" layoutX="151.0" layoutY="193.0" promptText="Last name" />
       <TextField fx:id="companyinp" layoutX="151.0" layoutY="267.0" promptText="Company name" />
       <TextField fx:id="reductioninp" layoutX="151.0" layoutY="342.0" promptText="Payment reduction" />
-      <DatePicker fx:id="startdateinp" layoutX="402.0" layoutY="137.0" promptText="Start date" />
-      <DatePicker fx:id="enddateinp" layoutX="402.0" layoutY="255.0" promptText="End date" />
+      <DatePicker fx:id="startdateinp" layoutX="402.0" layoutY="74.0" promptText="Start date" />
+      <DatePicker fx:id="enddateinp" layoutX="402.0" layoutY="192.0" promptText="End date" />
       <Text fill="WHITESMOKE" layoutX="52.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id number">
          <font>
             <Font size="15.0" />
@@ -42,22 +42,22 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITESMOKE" layoutX="413.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date">
+      <Text fill="WHITESMOKE" layoutX="413.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="WHITESMOKE" layoutX="413.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date">
+      <Text fill="WHITESMOKE" layoutX="413.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="editbtn" layoutX="483.0" layoutY="340.0" mnemonicParsing="false" onAction="#editmem" prefHeight="37.0" prefWidth="87.0" text="Edit">
+      <Button fx:id="editbtn" layoutX="434.0" layoutY="270.0" mnemonicParsing="false" onAction="#editmem" prefHeight="37.0" prefWidth="87.0" text="Edit">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label fx:id="editconflabel" layoutX="337.0" layoutY="342.0" prefHeight="37.0" prefWidth="124.0" textFill="WHITESMOKE">
+      <Label fx:id="editconflabel" alignment="CENTER" layoutX="337.0" layoutY="342.0" prefHeight="37.0" prefWidth="253.0" textAlignment="CENTER" textFill="WHITESMOKE">
          <font>
             <Font size="13.0" />
          </font>

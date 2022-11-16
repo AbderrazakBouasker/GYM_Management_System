@@ -119,7 +119,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Button fx:id="submitbutton" layoutX="393.0" layoutY="391.0" mnemonicParsing="false" onAction="#insert" prefHeight="51.0" prefWidth="99.0" text="Submit">
+            <Button fx:id="submitbutton" layoutX="423.0" layoutY="385.0" mnemonicParsing="false" onAction="#insert" prefHeight="51.0" prefWidth="99.0" text="Submit">
                <font>
                   <Font size="20.0" />
                </font>
@@ -129,7 +129,7 @@
                   <Font size="23.0" />
                </font>
             </Text>
-            <Label fx:id="outlabel" layoutX="338.0" layoutY="349.0" prefHeight="30.0" prefWidth="210.0" textAlignment="CENTER" textFill="WHITESMOKE">
+            <Label fx:id="outlabel" alignment="CENTER" layoutX="274.0" layoutY="348.0" prefHeight="30.0" prefWidth="429.0" textFill="WHITESMOKE">
                <font>
                   <Font size="20.0" />
                </font>
