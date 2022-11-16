@@ -67,7 +67,7 @@ public class editmembercontroller implements Initializable {
             Date d1 = sdf.parse(String.valueOf(startdateinp.getValue()));
             Date d2 = sdf.parse(String.valueOf(enddateinp.getValue()));
             long diff = d2.getTime() - d1.getTime();
-            if (diff<0){
+            if (diff<=0){
                 editconflabel.setText("Start date should be earlier than end date");
             }
             else {

@@ -225,7 +225,7 @@ public class mainscreencontroller implements Initializable {
             Date d1 = sdf.parse(String.valueOf(startdate));
             Date d2 = sdf.parse(String.valueOf(enddate));
             long diff = d2.getTime() - d1.getTime();
-            if (diff < 0) {
+            if (diff <= 0) {
                 outlabel.setText("Start date should be earlier than end date");
             } else {
                 String varstartdate = startdate.toString();
