@@ -71,8 +71,8 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="expdaysinp" layoutX="695.0" layoutY="127.0" onKeyPressed="#updatedashbydays" prefHeight="25.0" prefWidth="171.0" text="3" />
-            <TextField fx:id="costinp" layoutX="695.0" layoutY="329.0" onKeyPressed="#revenuebyinp" prefHeight="25.0" prefWidth="171.0" text="60" />
+            <TextField fx:id="expdaysinp" layoutX="695.0" layoutY="127.0" onKeyTyped="#updatedashbydays" prefHeight="25.0" prefWidth="171.0" text="3" />
+            <TextField fx:id="costinp" layoutX="695.0" layoutY="329.0" onKeyTyped="#revenuebyinp" prefHeight="25.0" prefWidth="171.0" text="60" />
          </children>
       </Pane>
       <Pane fx:id="addmemberpane" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;" visible="false">
