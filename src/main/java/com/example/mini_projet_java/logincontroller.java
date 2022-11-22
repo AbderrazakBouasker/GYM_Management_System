@@ -3,10 +3,14 @@ package com.example.mini_projet_java;
 
 import dao.Logindao;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 import java.io.IOException;
 import java.sql.*;
 
@@ -104,4 +108,14 @@ public class logincontroller {
         passwordinput.setVisible(true);
         passwordinputtext.setVisible(false);
     }
+
+    @FXML
+    void loginbyenter(KeyEvent event) throws SQLException, IOException {
+        if(event.getCode().equals(KeyCode.ENTER)) {
+            login(new ActionEvent());
+
+        }
+
+    }
+
 }

@@ -13,7 +13,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="517.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.logincontroller">
    <children>
       <TextField fx:id="usernameinput" layoutX="184.0" layoutY="55.0" promptText="Username" />
-      <PasswordField fx:id="passwordinput" layoutX="184.0" layoutY="148.0" promptText="Password" />
+      <PasswordField fx:id="passwordinput" layoutX="184.0" layoutY="148.0" onKeyPressed="#loginbyenter" promptText="Password" />
       <Button fx:id="loginbutton" layoutX="220.0" layoutY="211.0" mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="78.0" text="Login">
          <font>
             <Font size="16.0" />
@@ -37,6 +37,6 @@
             <Font size="15.0" />
          </font>
       </Hyperlink>
-      <TextField fx:id="passwordinputtext" layoutX="226.0" layoutY="177.0" visible="false" />
+      <TextField fx:id="passwordinputtext" layoutX="184.0" layoutY="148.0" visible="false" />
    </children>
 </AnchorPane>
