@@ -112,7 +112,7 @@ public class logincontroller {
     @FXML
     void loginbyenter(KeyEvent event) throws SQLException, IOException {
         if(event.getCode().equals(KeyCode.ENTER)) {
-            login(new ActionEvent());
+            
 
         }
 
