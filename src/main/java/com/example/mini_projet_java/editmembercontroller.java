@@ -59,7 +59,7 @@ public class editmembercontroller implements Initializable {
     }
 
     public void editmem(ActionEvent event) throws SQLException, ParseException {
-        if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||companyinp.getText().isEmpty()||reductioninp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
+        if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
             editconflabel.setText("Fill all fields");
         }
         else {

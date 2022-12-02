@@ -218,6 +218,7 @@ public class mainscreencontroller implements Initializable {
         String varname=nameinput.getText();
         String varlastname=lastnameinput.getText();
         String varidnumber=idnumberinput.getText();
+
         if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null) {
             outlabel.setText("Fill all necessary fields");
         }else {
@@ -235,6 +236,11 @@ public class mainscreencontroller implements Initializable {
                 }
                 mainscreendao.insertnew(varidnumber, varname, varlastname, varcompany, varpayment, varstartdate, varenddate);
                 outlabel.setText("Added successfully");
+                companyinput.setText("");
+                reductioninput.setText("");
+                nameinput.setText("");
+                lastnameinput.setText("");
+                idnumberinput.setText("");
             }
         }
     }
