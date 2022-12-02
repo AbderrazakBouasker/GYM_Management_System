@@ -56,16 +56,16 @@ public class editmembercontroller implements Initializable {
     }
 
     public void editmem(ActionEvent event) throws SQLException, ParseException {
-        if (!idnuminp.getText().matches("[0-9]*")|| !reductioninp.getText().matches("[0-9]*")){
+
+        if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
+            editconflabel.setText("Fill all fields");
+        }else if (!idnuminp.getText().matches("[0-9]*")|| !reductioninp.getText().matches("[0-9]*")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText("Input Error");
             alert.setContentText("Id field and Reduction field input should be numeric!");
             editconflabel.setText("");
             alert.showAndWait();
-        }
-        else if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
-            editconflabel.setText("Fill all fields");
         }
         else {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

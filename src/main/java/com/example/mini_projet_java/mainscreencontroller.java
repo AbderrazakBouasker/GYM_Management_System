@@ -234,16 +234,17 @@ public class mainscreencontroller implements Initializable {
         String varname=nameinput.getText();
         String varlastname=lastnameinput.getText();
         String varidnumber=idnumberinput.getText();
-        if (!idnumberinput.getText().matches("[0-9]*")|| !reductioninput.getText().matches("[0-9]*")){
+
+        if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null) {
+            outlabel.setText("Fill all necessary fields");
+        }
+        else if (!idnumberinput.getText().matches("[0-9]*")|| !reductioninput.getText().matches("[0-9]*")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText("Input Error");
             alert.setContentText("Id field and Reduction field input should be numeric!");
             outlabel.setText("");
             alert.showAndWait();
-        }
-        else if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null) {
-            outlabel.setText("Fill all necessary fields");
         }else {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date d1 = sdf.parse(String.valueOf(startdate));
