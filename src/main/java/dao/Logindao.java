@@ -81,7 +81,6 @@ public class Logindao {
 
     public boolean changepass(String oldpass,String newpass) throws SQLException {
         initinfoinlogdao();
-        System.out.println(dbuserid+"      "+dbuserpassword+"    "+oldpass);
         if (oldpass.equals(dbuserpassword)){
             String query="UPDATE logininfo SET password = '"+newpass+"' WHERE id = "+dbuserid;
             //statement.execute(query);
