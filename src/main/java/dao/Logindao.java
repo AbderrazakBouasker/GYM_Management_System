@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class Logindao {
     Statement statement=null;
+    String dbuserid;
     String dbuserpassword;
     String dbusername;
     String dbusermovie;
@@ -24,12 +25,39 @@ public class Logindao {
 
         }
     }
+    public void initinfoinlogdao() throws SQLException {
+        String query="select * from logininfo ";
+        ResultSet resultSet=statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            dbuserid=resultSet.getString("id");
+            dbuserpassword=resultSet.getString("password");
+            dbusername=resultSet.getString("username");
+            dbusermovie=resultSet.getString("qmovie");
+            dbusermusic=resultSet.getString("qmusic");
+
+        }
+    }
 
     public void dbgetuserinfo(TextField inputusername) throws SQLException {
         String query="select * from logininfo where username=\""+inputusername.getText().toString()+ "\"";
         ResultSet resultSet=statement.executeQuery(query);
 
         while (resultSet.next()) {
+            dbuserid=resultSet.getString("id");
+            dbuserpassword=resultSet.getString("password");
+            dbusername=resultSet.getString("username");
+            dbusermovie=resultSet.getString("qmovie");
+            dbusermusic=resultSet.getString("qmusic");
+
+        }
+    }
+    public void dbgetuserinfo2(String inputusername) throws SQLException {
+        String query="select * from logininfo where username=\""+inputusername+ "\"";
+        ResultSet resultSet=statement.executeQuery(query);
+
+        while (resultSet.next()) {
+            dbuserid=resultSet.getString("id");
             dbuserpassword=resultSet.getString("password");
             dbusername=resultSet.getString("username");
             dbusermovie=resultSet.getString("qmovie");
@@ -49,6 +77,19 @@ public class Logindao {
             return true;
         }
         return false;
+    }
+
+    public boolean changepass(String oldpass,String newpass) throws SQLException {
+        initinfoinlogdao();
+        System.out.println(dbuserid+"      "+dbuserpassword+"    "+oldpass);
+        if (oldpass.equals(dbuserpassword)){
+            String query="UPDATE logininfo SET password = '"+newpass+"' WHERE id = "+dbuserid;
+            //statement.execute(query);
+            statement.executeUpdate(query);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public String getDbuserpassword() {

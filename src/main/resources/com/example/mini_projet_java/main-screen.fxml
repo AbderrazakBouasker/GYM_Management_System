@@ -15,9 +15,10 @@
 <AnchorPane prefHeight="556.0" prefWidth="1130.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.mainscreencontroller">
    <children>
       <Button fx:id="maindashboardbutton" layoutX="19.0" layoutY="68.0" mnemonicParsing="false" onAction="#refreshdashboard" prefHeight="41.0" prefWidth="90.0" text="Dashboard" />
-      <Button fx:id="mainlistbutton" layoutX="19.0" layoutY="197.0" mnemonicParsing="false" onAction="#switchlist" prefHeight="41.0" prefWidth="111.0" text="Members list" />
-      <Button fx:id="mainaddbutton" layoutX="19.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchadd" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
+      <Button fx:id="mainlistbutton" layoutX="19.0" layoutY="177.0" mnemonicParsing="false" onAction="#switchlist" prefHeight="41.0" prefWidth="111.0" text="Members list" />
+      <Button fx:id="mainaddbutton" layoutX="19.0" layoutY="286.0" mnemonicParsing="false" onAction="#switchadd" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
       <Button fx:id="mainlogoutbutton" layoutX="19.0" layoutY="480.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="74.0" text="Logout" />
+      <Button fx:id="changepassscene" layoutX="19.0" layoutY="383.0" mnemonicParsing="false" onAction="#switchpassscene" prefHeight="41.0" prefWidth="119.0" text="Change password" />
       <Text fill="WHITESMOKE" layoutX="439.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
          <font>
             <Font size="22.0" />

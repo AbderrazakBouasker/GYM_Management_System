@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 import java.util.Date;
 
 
+
 public class mainscreencontroller implements Initializable {
 
     @FXML
@@ -134,6 +135,8 @@ public class mainscreencontroller implements Initializable {
 
     @FXML
     private TableColumn<listtableimp, String> listtableviewstartdate;
+    @FXML
+    private Button changepassscene;
 
     boolean selection=false;
     //delete verification
@@ -372,6 +375,16 @@ public class mainscreencontroller implements Initializable {
                 });
             }
         }
+    }
+    public void switchpassscene(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("changepass-screen.fxml"));
+        root=fxmlLoader.load();
+        //Changepasscontroller changepasscontroller=fxmlLoader.getController();
+        Stage popups = new Stage();
+        Scene scene = new Scene(root);
+        popups.setTitle("Password change");
+        popups.setScene(scene);
+        popups.show();
     }
 
 
