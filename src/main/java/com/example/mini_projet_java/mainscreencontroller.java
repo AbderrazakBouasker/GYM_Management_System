@@ -184,7 +184,15 @@ public class mainscreencontroller implements Initializable {
     }
     @FXML
     void updatedashbydays(KeyEvent event) throws SQLException, ParseException {
-        if (expdaysinp.getText().isEmpty()){
+        if (!expdaysinp.getText().matches("[0-9]*")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Input Error");
+            alert.setContentText("Dates field should be numeric!");
+            alert.showAndWait();
+            expdaysinp.setText("");
+        }
+        else if (expdaysinp.getText().isEmpty()){
             ObservableList<dashtableimp> obser =mainscreendao.dashtablefill(0);
             dashboardlistname.setCellValueFactory(new PropertyValueFactory<>("name"));
             dashboardlistlastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -201,7 +209,15 @@ public class mainscreencontroller implements Initializable {
 
     @FXML
     void revenuebyinp(KeyEvent event) throws SQLException, ParseException {
-        if (costinp.getText().isEmpty()){
+        if (!costinp.getText().matches("[0-9]*")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Input Error");
+            alert.setContentText("Cost field input should be numeric!");
+            alert.showAndWait();
+            costinp.setText("");
+        }
+        else if (costinp.getText().isEmpty()){
             dashboardrevenuelabel.setText(mainscreendao.avgincome("60")+"Dt");
         }else {
             dashboardrevenuelabel.setText(mainscreendao.avgincome(costinp.getText()) + "Dt");
@@ -218,8 +234,15 @@ public class mainscreencontroller implements Initializable {
         String varname=nameinput.getText();
         String varlastname=lastnameinput.getText();
         String varidnumber=idnumberinput.getText();
-
-        if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null) {
+        if (!idnumberinput.getText().matches("[0-9]*")|| !reductioninput.getText().matches("[0-9]*")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Input Error");
+            alert.setContentText("Id field and Reduction field input should be numeric!");
+            outlabel.setText("");
+            alert.showAndWait();
+        }
+        else if (nameinput.getText().isEmpty() || lastnameinput.getText().isEmpty() || idnumberinput.getText().isEmpty() || startdate==null || enddate==null) {
             outlabel.setText("Fill all necessary fields");
         }else {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

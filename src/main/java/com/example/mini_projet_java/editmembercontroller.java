@@ -4,10 +4,7 @@ import dao.Mainscreendao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -59,7 +56,15 @@ public class editmembercontroller implements Initializable {
     }
 
     public void editmem(ActionEvent event) throws SQLException, ParseException {
-        if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
+        if (!idnuminp.getText().matches("[0-9]*")|| !reductioninp.getText().matches("[0-9]*")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Input Error");
+            alert.setContentText("Id field and Reduction field input should be numeric!");
+            editconflabel.setText("");
+            alert.showAndWait();
+        }
+        else if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
             editconflabel.setText("Fill all fields");
         }
         else {
