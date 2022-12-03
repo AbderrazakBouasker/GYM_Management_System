@@ -37,14 +37,15 @@ public class Mainscreendao {
         ResultSet resultSet= statement.executeQuery(query);
         String name;
         String lastname;
-        String startdate;
+        //String startdate;
         String enddate;
+        LocalDate datelocalDate=LocalDate.now();
         while (resultSet.next()){
             name=resultSet.getString("name");
             lastname=resultSet.getString("lastname");
-            startdate=resultSet.getString("startdate");
+            //startdate=resultSet.getString("startdate");
             enddate=resultSet.getString("enddate");
-            Date d1 = sdf.parse(startdate);
+            Date d1 = sdf.parse(datelocalDate.toString());
             Date d2 = sdf.parse(enddate);
             long difference_In_Time = d2.getTime() - d1.getTime();
             long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
