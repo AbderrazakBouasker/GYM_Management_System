@@ -15,10 +15,10 @@
 <AnchorPane prefHeight="556.0" prefWidth="1130.0" style="-fx-background-color: #424242;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mini_projet_java.mainscreencontroller">
    <children>
       <Button fx:id="maindashboardbutton" layoutX="19.0" layoutY="68.0" mnemonicParsing="false" onAction="#refreshdashboard" prefHeight="41.0" prefWidth="90.0" text="Dashboard" />
-      <Button fx:id="mainlistbutton" layoutX="19.0" layoutY="177.0" mnemonicParsing="false" onAction="#switchlist" prefHeight="41.0" prefWidth="111.0" text="Members list" />
-      <Button fx:id="mainaddbutton" layoutX="19.0" layoutY="286.0" mnemonicParsing="false" onAction="#switchadd" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
+      <Button fx:id="mainlistbutton" layoutX="19.0" layoutY="175.0" mnemonicParsing="false" onAction="#switchlist" prefHeight="41.0" prefWidth="111.0" text="Members list" />
+      <Button fx:id="mainaddbutton" layoutX="19.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchadd" prefHeight="41.0" prefWidth="119.0" text="Add new member" />
       <Button fx:id="mainlogoutbutton" layoutX="19.0" layoutY="480.0" mnemonicParsing="false" onAction="#logout" prefHeight="41.0" prefWidth="74.0" text="Logout" />
-      <Button fx:id="changepassscene" layoutX="19.0" layoutY="383.0" mnemonicParsing="false" onAction="#switchpassscene" prefHeight="41.0" prefWidth="119.0" text="Change password" />
+      <Button fx:id="changepassscene" layoutX="19.0" layoutY="374.0" mnemonicParsing="false" onAction="#switchpassscene" prefHeight="41.0" prefWidth="119.0" text="Change password" />
       <Text fill="WHITESMOKE" layoutX="439.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gym management system" textAlignment="CENTER">
          <font>
             <Font size="22.0" />
@@ -159,6 +159,26 @@
                </font>
             </Label>
             <TextField fx:id="searchfield" layoutX="723.0" layoutY="15.0" onKeyTyped="#search" />
+         </children>
+      </Pane>
+      <Pane fx:id="musicpanel" layoutX="155.0" layoutY="77.0" prefHeight="462.0" prefWidth="955.0" style="-fx-background-color: #212121;" visible="false">
+         <children>
+            <Button fx:id="editmusicbtn" layoutX="890.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Edit" />
+            <Button fx:id="deletemusicbtn" layoutX="890.0" layoutY="111.0" mnemonicParsing="false" text="Delete" />
+            <TextField fx:id="editmusicid" editable="false" layoutX="694.0" layoutY="32.0" />
+            <TextField fx:id="editmusictitle" layoutX="694.0" layoutY="85.0" />
+            <TextField fx:id="editmusiclink" layoutX="694.0" layoutY="128.0" />
+            <TextField layoutX="36.0" layoutY="58.0" />
+            <TextField layoutX="36.0" layoutY="129.0" />
+            <Button fx:id="addmusicbtn" layoutX="217.0" layoutY="99.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Add" />
+            <TableView fx:id="musictable" layoutX="14.0" layoutY="181.0" prefHeight="267.0" prefWidth="357.0">
+              <columns>
+                <TableColumn fx:id="musicidcol" prefWidth="46.0" text="Id" />
+                <TableColumn fx:id="musictitlecol" prefWidth="104.0" text="Title" />
+                  <TableColumn fx:id="musiclinkcol" prefWidth="206.0" text="Link" />
+              </columns>
+            </TableView>
+            <Button fx:id="playmusicbtn" layoutX="451.0" layoutY="302.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Play" />
          </children>
       </Pane>
    </children>

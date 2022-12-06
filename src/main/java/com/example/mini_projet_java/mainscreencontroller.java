@@ -138,6 +138,38 @@ public class mainscreencontroller implements Initializable {
     @FXML
     private Button changepassscene;
 
+    @FXML
+    private Button music;
+    @FXML
+    private Button addmusic;
+    @FXML
+    private Button editmusic;
+    @FXML
+    private Button deletemusic;
+    @FXML
+    private Button playmusic;
+    @FXML
+    private TextField editmusicid;
+
+    @FXML
+    private TextField editmusiclink;
+
+    @FXML
+    private TextField editmusictitle;
+    @FXML
+    private TableColumn<Musictable, String> musicidcol;
+    @FXML
+    private TableColumn<Musictable, String> musictitlecol;
+
+    @FXML
+    private TableColumn<Musictable, String> musiclinkcol;
+
+    @FXML
+    private TableView<Musictable> musictable;
+
+    @FXML
+    private Pane musicpanel;
+
     boolean selection=false;
     //delete verification
 
@@ -174,6 +206,7 @@ public class mainscreencontroller implements Initializable {
     public void refreshdashboard(ActionEvent event) throws SQLException, ParseException {
         addmemberpane.setVisible(false);
         memberslistpanel.setVisible(false);
+        musicpanel.setVisible(false);
         dashboardpanel.setVisible(true);
         dashboardrevenuelabel.setText(mainscreendao.avgincome(costinp.getText())+"Dt");
         dashboardmemberslabel.setText(mainscreendao.getmemcount());
@@ -275,6 +308,7 @@ public class mainscreencontroller implements Initializable {
     public void switchadd(ActionEvent event){
         dashboardpanel.setVisible(false);
         memberslistpanel.setVisible(false);
+        musicpanel.setVisible(false);
         addmemberpane.setVisible(true);
 
     }
@@ -284,6 +318,7 @@ public class mainscreencontroller implements Initializable {
     public void switchlist(ActionEvent event) throws SQLException {
         dashboardpanel.setVisible(false);
         addmemberpane.setVisible(false);
+        musicpanel.setVisible(false);
         memberslistpanel.setVisible(true);
         ObservableList<listtableimp> observ =mainscreendao.getinfo();
         listtableviewidnumber.setCellValueFactory(new PropertyValueFactory<>("listidnumber"));
@@ -382,10 +417,22 @@ public class mainscreencontroller implements Initializable {
         //Changepasscontroller changepasscontroller=fxmlLoader.getController();
         Stage popups = new Stage();
         Scene scene = new Scene(root);
+        popups.centerOnScreen();
+        popups.setResizable(false);
         popups.setTitle("Password change");
         popups.setScene(scene);
         popups.show();
     }
+    public void switchmusic(ActionEvent event){
+        dashboardpanel.setVisible(false);
+        memberslistpanel.setVisible(false);
+        addmemberpane.setVisible(false);
+        musicpanel.setVisible(true);
+    }
+    public void editmusic(ActionEvent event){
+
+    }
+
 
 
     /*public void delete(ActionEvent event) throws SQLException{
