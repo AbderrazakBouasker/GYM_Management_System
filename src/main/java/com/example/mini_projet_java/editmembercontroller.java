@@ -56,7 +56,7 @@ public class editmembercontroller implements Initializable {
     }
 
     public void editmem(ActionEvent event) throws SQLException, ParseException {
-
+        String varpayment=reductioninp.getText();
         if(idnuminp.getText().isEmpty()||nameinp.getText().isEmpty()||lastnameinp.getText().isEmpty()||startdateinp.getValue().equals(null)||enddateinp.getValue().equals(null)){
             editconflabel.setText("Fill all fields");
         }else if (!idnuminp.getText().matches("[0-9]*")|| !reductioninp.getText().matches("[0-9]*")){
@@ -78,9 +78,12 @@ public class editmembercontroller implements Initializable {
             else {
             LocalDate startdate=startdateinp.getValue();
             String varstartdate=startdate.toString();
+                if (reductioninp.getText().isEmpty()) {
+                    varpayment = null;
+                }
             LocalDate enddate=enddateinp.getValue();
             String varenddate=enddate.toString();
-            mainscreendao.editmeminfo(tempid,idnuminp.getText(),nameinp.getText(),lastnameinp.getText(),companyinp.getText(),reductioninp.getText(),varstartdate,varenddate);
+            mainscreendao.editmeminfo(tempid,idnuminp.getText(),nameinp.getText(),lastnameinp.getText(),companyinp.getText(),varpayment,varstartdate,varenddate);
             editconflabel.setText("Edited successfully");
     }}}
     public void setall(String id,String idn,String name,String lastname,String company,String reduction,String start,String end){
