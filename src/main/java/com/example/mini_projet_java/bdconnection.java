@@ -8,7 +8,7 @@ public class bdconnection {
 
     public static Connection connecter() throws SQLException {
 
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/miniprojdb","root","24506544");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/miniprojdb","root","");
         return con;
     }
 
